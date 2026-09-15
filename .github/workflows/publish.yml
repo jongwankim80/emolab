@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -33,26 +33,47 @@ jobs:
       - name: Generate people and publication content
         run: python scripts/build_content.py
 
-      - name: Normalize generated CMS markdown
+      - name: Normalize generated CMS markdown and site-wide text
         run: |
           python - <<'PY'
           from pathlib import Path
+          import yaml
 
           generated = Path('generated')
           home = generated / 'home.md'
           home_pubs = generated / 'home-publications.md'
+
+          site = yaml.safe_load(Path('data/site-content.yml').read_text(encoding='utf-8')) or {}
+          sitewide = site.get('sitewide') or {}
+          footer = sitewide.get('footer') or {}
+          site_title = str(sitewide.get('title') or 'EmoLab')
+          footer_left = str(footer.get('left') or 'Emotion & Cognition Laboratory · Department of Psychology · Jeonbuk National University')
+          footer_right = str(footer.get('right') or 'Jeonju, Republic of Korea')
 
           text = home.read_text(encoding='utf-8')
           include = '{{< include generated/home-publications.md >}}'
           if include in text:
               text = text.replace(include, home_pubs.read_text(encoding='utf-8'))
           text = text.replace('::: {}', '::: {.cms-copy}')
+          text = text.replace('::: {.map-center}\nEmoLab\n:::', f'::: {{.map-center}}\n{site_title}\n:::')
           home.write_text(text, encoding='utf-8')
 
           for name in ('research.md', 'resources.md', 'join.md'):
               path = generated / name
               text = path.read_text(encoding='utf-8').replace('::: {}', '::: {.cms-copy}')
               path.write_text(text, encoding='utf-8')
+
+          quarto_path = Path('_quarto.yml')
+          quarto = yaml.safe_load(quarto_path.read_text(encoding='utf-8')) or {}
+          website = quarto.setdefault('website', {})
+          website['title'] = site_title
+          page_footer = website.setdefault('page-footer', {})
+          page_footer['left'] = footer_left
+          page_footer['right'] = footer_right
+          quarto_path.write_text(
+              yaml.safe_dump(quarto, sort_keys=False, allow_unicode=True, width=1000),
+              encoding='utf-8'
+          )
           PY
 
       - name: Set up Quarto
