@@ -69,7 +69,7 @@ Comparing human and artificial representational systems and using modern AI syst
 <a class="text-link" href="publications.qmd">View all publications →</a>
 </div>
 
-{{< include _generated/home-publications.md >}}
+{{< include generated/home-publications.md >}}
 </section>
 
 <section class="team-callout">
