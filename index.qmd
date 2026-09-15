@@ -2,28 +2,46 @@
 page-layout: full
 ---
 
-<section class="hero-wrap">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="eyebrow">Emotion & Cognition Laboratory · JBNU</div>
-      <h1>Understanding affective representations in <span>minds, brains, and machines.</span></h1>
-      <p>We study how affective experience is structured across people, sensory modalities, biological systems, and artificial intelligence—and develop multivariate methods to make those structures visible.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="research.qmd">Explore our research</a>
-        <a class="btn btn-outline-primary" href="people.qmd">Meet the lab</a>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="orbit orbit-a"></div>
-      <div class="orbit orbit-b"></div>
-      <div class="map-node node-affect">Affect</div>
-      <div class="map-node node-brain">Brain</div>
-      <div class="map-node node-methods">Methods</div>
-      <div class="map-node node-ai">AI</div>
-      <div class="map-center">EmoLab</div>
-    </div>
-  </div>
-</section>
+::: {.hero-wrap}
+::: {.hero-inner}
+::: {.hero-copy}
+::: {.eyebrow}
+Emotion & Cognition Laboratory · JBNU
+:::
+
+# Understanding affective representations in [minds, brains, and machines.]{.hero-highlight}
+
+We study how affective experience is structured across people, sensory modalities, biological systems, and artificial intelligence—and develop multivariate methods to make those structures visible.
+
+::: {.hero-actions}
+[Explore our research](research.qmd){.btn .btn-primary}
+[Meet the lab](people.qmd){.btn .btn-outline-primary}
+:::
+:::
+
+::: {.hero-visual aria-hidden="true"}
+::: {.orbit .orbit-a}
+:::
+::: {.orbit .orbit-b}
+:::
+::: {.map-node .node-affect}
+Affect
+:::
+::: {.map-node .node-brain}
+Brain
+:::
+::: {.map-node .node-methods}
+Methods
+:::
+::: {.map-node .node-ai}
+AI
+:::
+::: {.map-center}
+EmoLab
+:::
+:::
+:::
+:::
 
 <section class="content-section">
 <div class="section-heading">
