@@ -1,0 +1,29 @@
+---
+title: "Research"
+---
+
+EmoLab studies affective and cognitive representation across people, modalities, biological systems, and artificial intelligence. Rather than organizing the lab around short-lived individual projects, this page presents the broader research themes that connect our work.
+
+## Affective Representation
+
+How are emotions and affective experiences organized? We study the geometry and structure of affective representations across sensory modalities, individuals, tasks, and stimulus domains.
+
+**Selected topics:** emotional similarity, cross-modal representation, multidimensional affective spaces, individual differences.
+
+## Multivariate Methods
+
+We develop and apply methods that treat patterns and relational structure as primary scientific objects rather than reducing psychological data to one variable at a time.
+
+**Selected approaches:** multidimensional scaling, representational similarity analysis, multivariate classification, Procrustes analysis, permutation and resampling methods.
+
+## Brain & Physiology
+
+We investigate how affective and cognitive information is represented in neural and physiological activity, with an emphasis on multivariate structure and cross-task generalization.
+
+**Selected approaches:** fMRI, fNIRS, psychophysiology, behavioral experiments.
+
+## Humans & Artificial Intelligence
+
+We use modern AI systems both as objects of psychological comparison and, where scientifically appropriate, as experimental respondents. A central question is where human and artificial representational structures converge and diverge.
+
+**Selected topics:** human–AI representational similarity, AI-generated stimuli, LLM-based psychological experiments, affective judgments.
