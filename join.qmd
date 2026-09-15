@@ -1,0 +1,23 @@
+---
+title: "Join Us"
+---
+
+EmoLab welcomes students who are interested in affective science, cognitive neuroscience, computational and multivariate methods, and psychological experimentation.
+
+## Prospective Graduate Students
+
+Graduate students in the lab receive training in experimental design, quantitative analysis, scientific programming, and research communication. Depending on the project, this may include MATLAB or R, multivariate analysis, behavioral experimentation, and neuroimaging or physiological data.
+
+Detailed application guidance will be added here, including what prospective students should send and when to contact the lab.
+
+## Undergraduate Research Assistants
+
+Undergraduate researchers typically begin with behavioral research and foundational training in statistics and scientific programming before progressing to more advanced analyses.
+
+Information about availability, expectations, and how to inquire will be added here.
+
+## Contact
+
+Department of Psychology  
+Jeonbuk National University  
+Jeonju, Republic of Korea
