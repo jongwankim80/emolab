@@ -186,8 +186,32 @@ main.content { max-width: var(--emolab-max); }
 .pub-year > .pub-card { grid-column: 2; }
 .year-label { grid-column: 1; grid-row: 1 / span 999; font-size: 1.55rem; font-weight: 780; letter-spacing: -.03em; color: var(--emolab-accent-dark); padding-top: 1.35rem; }
 
-.research-theme { display: grid; grid-template-columns: 100px 1fr; gap: 2.2rem; padding: 3rem 0; border-bottom: 1px solid var(--emolab-border); }
-.theme-number { color: var(--emolab-accent); font-weight: 850; letter-spacing: .12em; }
+.research-theme {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2.2rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--emolab-border);
+  align-items: start;
+}
+.theme-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .9rem;
+}
+.theme-number {
+  color: var(--emolab-accent);
+  font-weight: 850;
+  letter-spacing: .12em;
+}
+.theme-icon {
+  width: 96px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 .research-theme h2 { font-size: 2rem; margin-top: 0; letter-spacing: -.03em; }
 .research-theme p { color: #4e5966; line-height: 1.75; }
 
@@ -220,5 +244,7 @@ main.content { max-width: var(--emolab-max); }
   .pub-year > .pub-card, .year-label { grid-column: 1; }
   .year-label { grid-row: auto; padding-top: 0; margin-bottom: .4rem; }
   .research-theme { grid-template-columns: 1fr; gap: .8rem; }
+  .theme-side { flex-direction: row; align-items: center; gap: 1rem; }
+  .theme-icon { width: 64px; }
   .alumni-row { grid-template-columns: 1fr; gap: .35rem; }
 }
