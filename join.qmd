@@ -1,23 +1,34 @@
 ---
 title: "Join Us"
+page-layout: full
 ---
 
-EmoLab welcomes students who are interested in affective science, cognitive neuroscience, computational and multivariate methods, and psychological experimentation.
+<div class="page-intro">
+<div class="eyebrow">Join EmoLab</div>
+<p>We welcome students who are curious about emotion, cognition, neuroscience, and quantitative methods—and who want to learn research by doing it.</p>
+</div>
 
+::: {.join-grid}
+::: {.join-card}
 ## Prospective Graduate Students
+Graduate students in EmoLab are expected to take increasing ownership of research questions, experimental design, data analysis, and scientific writing. Prior programming experience is helpful but not required; willingness to learn quantitative methods is essential.
 
-Graduate students in the lab receive training in experimental design, quantitative analysis, scientific programming, and research communication. Depending on the project, this may include MATLAB or R, multivariate analysis, behavioral experimentation, and neuroimaging or physiological data.
+If you are considering graduate study, send a short introduction, your research interests, and a CV or transcript to **jongwankim80@jbnu.ac.kr**.
+:::
 
-Detailed application guidance will be added here, including what prospective students should send and when to contact the lab.
+::: {.join-card}
+## Undergraduate Researchers
+Undergraduate researchers typically begin with behavioral experiments, reading and discussion, basic statistics, and MATLAB or related analysis tools before moving toward an independent project.
 
-## Undergraduate Research Assistants
-
-Undergraduate researchers typically begin with behavioral research and foundational training in statistics and scientific programming before progressing to more advanced analyses.
-
-Information about availability, expectations, and how to inquire will be added here.
+Students at Jeonbuk National University who are interested in joining the lab are welcome to inquire by email.
+:::
+:::
 
 ## Contact
 
-Department of Psychology  
+**Jongwan Kim, Ph.D.**  
+Professor, Department of Psychology  
 Jeonbuk National University  
-Jeonju, Republic of Korea
+Humanities & Social Sciences Building, Room 629  
+Jeonju, Republic of Korea  
+[jongwankim80@jbnu.ac.kr](mailto:jongwankim80@jbnu.ac.kr) · +82-63-270-3917
