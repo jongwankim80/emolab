@@ -188,29 +188,33 @@ main.content { max-width: var(--emolab-max); }
 
 .research-theme {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 104px 1fr;
   gap: 2.2rem;
   padding: 3rem 0;
   border-bottom: 1px solid var(--emolab-border);
   align-items: start;
 }
 .theme-side {
+  width: 104px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: .9rem;
+  align-items: center;
+  gap: .8rem;
 }
 .theme-number {
+  width: 100%;
   color: var(--emolab-accent);
   font-weight: 850;
   letter-spacing: .12em;
+  text-align: left;
 }
 .theme-icon {
-  width: 96px;
-  max-width: 100%;
-  height: auto;
+  width: 80px !important;
+  max-width: 80px !important;
+  height: 80px !important;
   display: block;
   object-fit: contain;
+  margin: 0 auto;
 }
 .research-theme h2 { font-size: 2rem; margin-top: 0; letter-spacing: -.03em; }
 .research-theme p { color: #4e5966; line-height: 1.75; }
@@ -244,7 +248,8 @@ main.content { max-width: var(--emolab-max); }
   .pub-year > .pub-card, .year-label { grid-column: 1; }
   .year-label { grid-row: auto; padding-top: 0; margin-bottom: .4rem; }
   .research-theme { grid-template-columns: 1fr; gap: .8rem; }
-  .theme-side { flex-direction: row; align-items: center; gap: 1rem; }
-  .theme-icon { width: 64px; }
+  .theme-side { width: auto; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; }
+  .theme-number { width: auto; }
+  .theme-icon { width: 64px !important; max-width: 64px !important; height: 64px !important; margin: 0; }
   .alumni-row { grid-template-columns: 1fr; gap: .35rem; }
 }
