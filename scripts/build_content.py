@@ -72,6 +72,11 @@ def publication_card(p, compact=False):
 </article>'''
 
 
+def txt(value):
+    return escape(str(value or ''))
+
+
+# People
 members = load_yaml('members.yml')['members']
 pi = next(m for m in members if m.get('group') == 'pi')
 undergrads = [m for m in members if m.get('group') == 'undergraduate' and m.get('current')]
@@ -111,8 +116,9 @@ for m in sorted(alumni, key=lambda x: str(x.get('year','')), reverse=True):
 people.append('</div></section>')
 (OUT / 'people.md').write_text('\n'.join(people), encoding='utf-8')
 
-pubs = load_yaml('publications.yml')['publications']
 
+# Publications
+pubs = load_yaml('publications.yml')['publications']
 special = [p for p in pubs if str(p.get('status','')).lower() == 'in press']
 forthcoming = [p for p in pubs if str(p.get('status','')).lower() == 'forthcoming']
 published = [p for p in pubs if str(p.get('status','')).lower() == 'published']
@@ -137,9 +143,212 @@ for year in sorted({p['year'] for p in published if p.get('year')}, reverse=True
 featured = [p for p in pubs if p.get('featured')]
 featured.sort(key=lambda p: (p.get('year') or 0, p.get('month') or 13), reverse=True)
 featured = featured[:4]
-home = ['<div class="featured-grid">']
-home.extend(publication_card(p, compact=True) for p in featured)
-home.append('</div>')
-(OUT / 'home-publications.md').write_text('\n'.join(home), encoding='utf-8')
+home_pubs = ['<div class="featured-grid">']
+home_pubs.extend(publication_card(p, compact=True) for p in featured)
+home_pubs.append('</div>')
+(OUT / 'home-publications.md').write_text('\n'.join(home_pubs), encoding='utf-8')
 
-print(f'Generated {len(members)} member records and {len(pubs)} publication records.')
+
+# CMS-editable site text
+site = load_yaml('site-content.yml')
+
+h = site['home']
+r = h['research_section']
+s = h['selected_work']
+t = h['team']
+hero = h['hero']
+home_body = f'''::: {{.hero-wrap}}
+::: {{.hero-inner}}
+::: {{.hero-copy}}
+::: {{.eyebrow}}
+{txt(hero['eyebrow'])}
+:::
+
+# {txt(hero['title_before_highlight'])} [**{txt(hero['title_highlight'])}**]{{.hero-highlight}}
+
+{txt(hero['intro'])}
+
+::: {{.hero-actions}}
+[{txt(hero['primary_button'])}](research.qmd){{.btn .btn-primary}}
+[{txt(hero['secondary_button'])}](people.qmd){{.btn .btn-outline-primary}}
+:::
+:::
+
+::: {{.hero-visual aria-hidden="true"}}
+::: {{.orbit .orbit-a}}
+:::
+::: {{.orbit .orbit-b}}
+:::
+::: {{.map-node .node-affect}}
+Affect
+:::
+::: {{.map-node .node-brain}}
+Brain
+:::
+::: {{.map-node .node-methods}}
+Methods
+:::
+::: {{.map-node .node-ai}}
+AI
+:::
+::: {{.map-center}}
+EmoLab
+:::
+:::
+:::
+:::
+
+::: {{.content-section}}
+::: {{.section-heading}}
+::: {{.eyebrow}}
+{txt(r['eyebrow'])}
+:::
+## {txt(r['heading'])}
+
+{txt(r['intro'])}
+:::
+
+::: {{.grid}}
+::: {{.g-col-12 .g-col-md-6 .research-card}}
+<div class="card-index">01</div>
+### {txt(r['theme_1_title'])}
+{txt(r['theme_1_text'])}
+:::
+::: {{.g-col-12 .g-col-md-6 .research-card}}
+<div class="card-index">02</div>
+### {txt(r['theme_2_title'])}
+{txt(r['theme_2_text'])}
+:::
+::: {{.g-col-12 .g-col-md-6 .research-card}}
+<div class="card-index">03</div>
+### {txt(r['theme_3_title'])}
+{txt(r['theme_3_text'])}
+:::
+::: {{.g-col-12 .g-col-md-6 .research-card}}
+<div class="card-index">04</div>
+### {txt(r['theme_4_title'])}
+{txt(r['theme_4_text'])}
+:::
+:::
+:::
+
+::: {{.content-section .selected-work}}
+::: {{.section-heading .split-heading}}
+::: {{}}
+::: {{.eyebrow}}
+{txt(s['eyebrow'])}
+:::
+## {txt(s['heading'])}
+:::
+[{txt(s['link_text'])}](publications.qmd){{.text-link}}
+:::
+
+{{{{< include generated/home-publications.md >}}}}
+:::
+
+::: {{.team-callout}}
+::: {{}}
+::: {{.eyebrow}}
+{txt(t['eyebrow'])}
+:::
+## {txt(t['heading'])}
+
+{txt(t['intro'])}
+:::
+[{txt(t['button_text'])}](people.qmd){{.btn .btn-outline-primary}}
+:::
+'''
+(OUT / 'home.md').write_text(home_body, encoding='utf-8')
+
+research = site['research']
+research_parts = [f'''::: {{.page-intro}}
+::: {{.eyebrow}}
+{txt(research['intro']['eyebrow'])}
+:::
+{txt(research['intro']['text'])}
+:::
+''']
+for i in range(1, 5):
+    th = research[f'theme_{i}']
+    qlabel = th.get('questions_label') or 'Questions we ask'
+    research_parts.append(f'''::: {{.research-theme}}
+::: {{.theme-number}}
+0{i}
+:::
+::: {{}}
+## {txt(th['title'])}
+
+{txt(th['summary'])}
+
+**{txt(qlabel)}:** {txt(th['questions'])}
+
+**Approaches:** {txt(th['approaches'])}
+:::
+:::
+''')
+(OUT / 'research.md').write_text('\n'.join(research_parts), encoding='utf-8')
+
+resources = site['resources']
+resources_body = f'''::: {{.page-intro}}
+::: {{.eyebrow}}
+{txt(resources['intro']['eyebrow'])}
+:::
+{txt(resources['intro']['text'])}
+:::
+
+::: {{.resource-grid}}
+::: {{.resource-card}}
+### {txt(resources['methods']['title'])}
+{txt(resources['methods']['text'])}
+:::
+::: {{.resource-card}}
+### {txt(resources['data']['title'])}
+{txt(resources['data']['text'])}
+:::
+::: {{.resource-card}}
+### {txt(resources['profiles']['title'])}
+[Google Scholar](https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0003-1316-1041) · [GitHub](https://github.com/jongwankim80)
+:::
+:::
+
+::: {{.small-note .resource-note}}
+{txt(resources['note'])}
+:::
+'''
+(OUT / 'resources.md').write_text(resources_body, encoding='utf-8')
+
+join = site['join']
+join_body = f'''::: {{.page-intro}}
+::: {{.eyebrow}}
+{txt(join['intro']['eyebrow'])}
+:::
+{txt(join['intro']['text'])}
+:::
+
+::: {{.join-grid}}
+::: {{.join-card}}
+## {txt(join['graduate']['title'])}
+{txt(join['graduate']['text'])}
+
+{txt(join['graduate']['contact_text'])} **{txt(join['contact']['email'])}**.
+:::
+::: {{.join-card}}
+## {txt(join['undergraduate']['title'])}
+{txt(join['undergraduate']['text'])}
+
+{txt(join['undergraduate']['contact_text'])}
+:::
+:::
+
+## {txt(join['contact']['heading'])}
+
+**{txt(join['contact']['name'])}**  
+{txt(join['contact']['title'])}  
+{txt(join['contact']['university'])}  
+{txt(join['contact']['office'])}  
+{txt(join['contact']['location'])}  
+[{txt(join['contact']['email'])}](mailto:{txt(join['contact']['email'])}) · {txt(join['contact']['phone'])}
+'''
+(OUT / 'join.md').write_text(join_body, encoding='utf-8')
+
+print(f'Generated {len(members)} member records, {len(pubs)} publication records, and CMS-editable site text.')
