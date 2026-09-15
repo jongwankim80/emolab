@@ -1,3 +1,9 @@
+sitewide:
+  title: EmoLab
+  footer:
+    left: Emotion & Cognition Laboratory · Department of Psychology · Jeonbuk National University
+    right: Jeonju, Republic of Korea
+
 home:
   hero:
     eyebrow: EmoLab · JBNU | 정서연구실 · 전북대학교
