@@ -3,6 +3,167 @@ media:
   output: /images
 
 content:
+  - name: site_text
+    label: Site Text
+    type: file
+    path: data/site-content.yml
+    format: yaml
+    fields:
+      - name: home
+        label: Home
+        type: object
+        fields:
+          - name: hero
+            label: Hero
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: title_before_highlight, label: Main title - first part, type: string }
+              - { name: title_highlight, label: Main title - highlighted part, type: string }
+              - { name: intro, label: Intro paragraph, type: text }
+              - { name: primary_button, label: Primary button, type: string }
+              - { name: secondary_button, label: Secondary button, type: string }
+          - name: research_section
+            label: Research summary section
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: intro, label: Intro paragraph, type: text }
+              - { name: theme_1_title, label: Theme 1 title, type: string }
+              - { name: theme_1_text, label: Theme 1 description, type: text }
+              - { name: theme_2_title, label: Theme 2 title, type: string }
+              - { name: theme_2_text, label: Theme 2 description, type: text }
+              - { name: theme_3_title, label: Theme 3 title, type: string }
+              - { name: theme_3_text, label: Theme 3 description, type: text }
+              - { name: theme_4_title, label: Theme 4 title, type: string }
+              - { name: theme_4_text, label: Theme 4 description, type: text }
+          - name: selected_work
+            label: Selected work section
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: link_text, label: Publications link text, type: string }
+          - name: team
+            label: Team section
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: intro, label: Intro paragraph, type: text }
+              - { name: button_text, label: Button text, type: string }
+
+      - name: research
+        label: Research page
+        type: object
+        fields:
+          - name: intro
+            label: Page introduction
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: text, label: Intro paragraph, type: text }
+          - name: theme_1
+            label: Theme 1 - Affective Representation
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: summary, label: Summary, type: text }
+              - { name: questions, label: Questions we ask, type: text }
+              - { name: approaches, label: Approaches, type: text }
+          - name: theme_2
+            label: Theme 2 - Multivariate Methods
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: summary, label: Summary, type: text }
+              - { name: questions_label, label: Middle paragraph label, type: string }
+              - { name: questions, label: Current directions / questions, type: text }
+              - { name: approaches, label: Approaches, type: text }
+          - name: theme_3
+            label: Theme 3 - Brain & Physiology
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: summary, label: Summary, type: text }
+              - { name: questions, label: Questions we ask, type: text }
+              - { name: approaches, label: Approaches, type: text }
+          - name: theme_4
+            label: Theme 4 - Humans & Artificial Intelligence
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: summary, label: Summary, type: text }
+              - { name: questions, label: Questions we ask, type: text }
+              - { name: approaches, label: Approaches, type: text }
+
+      - name: resources
+        label: Resources page
+        type: object
+        fields:
+          - name: intro
+            label: Page introduction
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: text, label: Intro paragraph, type: text }
+          - name: methods
+            label: Methods & software card
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Description, type: text }
+          - name: data
+            label: Data & materials card
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Description, type: text }
+          - name: profiles
+            label: Research profiles card
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+          - { name: note, label: Bottom note, type: text }
+
+      - name: join
+        label: Join Us page
+        type: object
+        fields:
+          - name: intro
+            label: Page introduction
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: text, label: Intro paragraph, type: text }
+          - name: graduate
+            label: Graduate students
+            type: object
+            fields:
+              - { name: title, label: Heading, type: string }
+              - { name: text, label: Main paragraph, type: text }
+              - { name: contact_text, label: Contact sentence, type: text }
+          - name: undergraduate
+            label: Undergraduate researchers
+            type: object
+            fields:
+              - { name: title, label: Heading, type: string }
+              - { name: text, label: Main paragraph, type: text }
+              - { name: contact_text, label: Contact sentence, type: text }
+          - name: contact
+            label: Contact information
+            type: object
+            fields:
+              - { name: heading, label: Section heading, type: string }
+              - { name: name, label: Name, type: string }
+              - { name: title, label: Position, type: string }
+              - { name: university, label: University, type: string }
+              - { name: office, label: Office, type: string }
+              - { name: location, label: Location, type: string }
+              - { name: email, label: Email, type: string }
+              - { name: phone, label: Phone, type: string }
+
   - name: members
     label: Members
     type: file
