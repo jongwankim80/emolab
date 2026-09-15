@@ -145,7 +145,7 @@ publications:
     volume: "186"
     pages: "106295"
     doi: 10.1016/j.bandc.2025.106295
-    featured: true
+    featured: false
   - year: 2024
     month: 12
     status: published
