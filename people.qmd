@@ -4,22 +4,36 @@ title: "People"
 
 ## Principal Investigator
 
-### Jongwan Kim, Ph.D.
+### Jongwan Kim, Ph.D. (김종완)
 
 Professor, Department of Psychology, Jeonbuk National University
 
 Research interests: affective neuroscience, multivariate methods, psychological representation, and AI in psychological science.
 
-[Google Scholar](#) · [ORCID](#) · [Email](#) · [CV](#)
+[Google Scholar](https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0003-1316-1041) · [Email](mailto:jongwankim80@jbnu.ac.kr)
 
 ## Graduate Students
 
-Current graduate students will appear here as profile cards managed through the site CMS.
+There are currently no graduate students in the lab.
 
 ## Undergraduate Researchers
 
-Current undergraduate researchers will appear here as profile cards managed through the site CMS.
+### 이정우
+4th-year undergraduate researcher
+
+### 박수아
+4th-year undergraduate researcher
+
+### 이윤서
+3rd-year undergraduate researcher
 
 ## Alumni
 
-Former members will be retained here rather than deleted, with degree and current position where appropriate.
+### 장준혁
+M.A., 2024 · 마이다스그룹 자인연구소
+
+### 김현중
+M.A., 2024
+
+### 박채리
+M.A., 2026 · Ph.D. student, University of Miami
