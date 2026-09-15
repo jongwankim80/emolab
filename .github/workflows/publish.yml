@@ -10,6 +10,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: "pages"
@@ -39,10 +40,29 @@ jobs:
           version: '1.10.18'
 
       - name: Render site
-        run: quarto render
+        id: render
+        shell: bash
+        run: |
+          set +e
+          quarto render > render.log 2>&1
+          status=$?
+          cat render.log
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Report render failure
+        if: steps.render.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          printf 'Automated diagnostic from workflow run %s.\n\n```text\n' "$GITHUB_RUN_ID" > issue-body.md
+          cat render.log >> issue-body.md
+          printf '\n```\n' >> issue-body.md
+          gh issue create --title "Quarto render diagnostic - run $GITHUB_RUN_ID" --body-file issue-body.md
+          exit 1
 
       - name: Upload Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.render.outputs.status == '0'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
