@@ -1,0 +1,27 @@
+/* Home hero illustration override */
+.hero-visual {
+  position: relative;
+  min-height: 500px;
+  border-radius: 0;
+  background: url("images/people/emolab-hero.png") center center / contain no-repeat;
+}
+
+/* Hide the previous CSS-drawn orbit diagram while keeping the layout container. */
+.hero-visual > * {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .hero-visual {
+    min-height: 380px;
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-visual {
+    min-height: 300px;
+  }
+}
