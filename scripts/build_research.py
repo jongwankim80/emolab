@@ -41,7 +41,7 @@ for i in range(1, 5):
 ::: {{.theme-side}}
 [0{i}]{{.theme-number}}
 
-![]({icons[i]}){{.theme-icon width="80px"}}
+![]({icons[i]}){{.theme-icon width="140px"}}
 :::
 
 ::: {{.theme-copy}}
