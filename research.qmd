@@ -1,29 +1,61 @@
 ---
 title: "Research"
+page-layout: full
 ---
 
-EmoLab studies affective and cognitive representation across people, modalities, biological systems, and artificial intelligence. Rather than organizing the lab around short-lived individual projects, this page presents the broader research themes that connect our work.
+<div class="page-intro">
+<div class="eyebrow">Research</div>
+<p>EmoLab studies affective and cognitive representation across people, modalities, biological systems, and artificial intelligence. These four themes connect our behavioral, neuroimaging, physiological, and methodological work.</p>
+</div>
 
+<section class="research-theme">
+<div class="theme-number">01</div>
+<div>
 ## Affective Representation
 
-How are emotions and affective experiences organized? We study the geometry and structure of affective representations across sensory modalities, individuals, tasks, and stimulus domains.
+How are emotions organized, and what aspects of that organization are shared across people and sensory modalities? We study the geometry of affective experience rather than treating each rating or stimulus as an isolated variable.
 
-**Selected topics:** emotional similarity, cross-modal representation, multidimensional affective spaces, individual differences.
+**Questions we ask:** How similar are emotional representations across taste, touch, sound, images, and naturalistic stimuli? Which dimensions are modality-general, and which are modality-specific? How stable are these spaces across people and tasks?
 
+**Approaches:** multidimensional scaling, representational similarity analysis, cross-modal mapping, behavioral experiments.
+</div>
+</section>
+
+<section class="research-theme">
+<div class="theme-number">02</div>
+<div>
 ## Multivariate Methods
 
-We develop and apply methods that treat patterns and relational structure as primary scientific objects rather than reducing psychological data to one variable at a time.
+Many psychological questions concern patterns and relations among variables, not single measurements. We develop and adapt analysis methods that preserve this structure and make high-dimensional hypotheses testable.
 
-**Selected approaches:** multidimensional scaling, representational similarity analysis, multivariate classification, Procrustes analysis, permutation and resampling methods.
+**Current directions:** classification based on relational structure, multivariate interaction tests, Procrustes-based spatial comparison, Bayesian multidimensional scaling, permutation and resampling methods.
 
+**Approaches:** MDS, RSA, MVPA, classification, Procrustes analysis, simulation, Bayesian modeling.
+</div>
+</section>
+
+<section class="research-theme">
+<div class="theme-number">03</div>
+<div>
 ## Brain & Physiology
 
-We investigate how affective and cognitive information is represented in neural and physiological activity, with an emphasis on multivariate structure and cross-task generalization.
+We investigate how affective and cognitive information is represented in neural and physiological activity. A recurring goal is to test whether representational structure generalizes across participants, tasks, and measurement contexts.
 
-**Selected approaches:** fMRI, fNIRS, psychophysiology, behavioral experiments.
+**Questions we ask:** Which neural patterns carry valence and arousal information? Are representations preserved from encoding to recall? Can structure generalize across tasks or individuals?
 
+**Approaches:** fMRI, fNIRS, psychophysiology, intersubject analyses, multivariate decoding.
+</div>
+</section>
+
+<section class="research-theme">
+<div class="theme-number">04</div>
+<div>
 ## Humans & Artificial Intelligence
 
-We use modern AI systems both as objects of psychological comparison and, where scientifically appropriate, as experimental respondents. A central question is where human and artificial representational structures converge and diverge.
+Modern AI provides both a comparison system and a new experimental tool for psychology. We examine where human and artificial judgments converge, where they differ, and what those differences reveal about representation.
 
-**Selected topics:** human–AI representational similarity, AI-generated stimuli, LLM-based psychological experiments, affective judgments.
+**Questions we ask:** Do LLMs and multimodal AI systems organize affective information like humans? When can AI act as an experimental respondent? How should human–AI similarity be quantified?
+
+**Approaches:** human–AI rating comparisons, representational similarity, cross-classification, AI-generated stimuli, large-scale language and image datasets.
+</div>
+</section>
