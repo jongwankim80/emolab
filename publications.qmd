@@ -1,0 +1,13 @@
+---
+title: "Publications"
+---
+
+Publications will be maintained as structured data so that new papers can be added through the CMS without manually editing this page.
+
+## 2026
+
+Publication entries will appear here automatically.
+
+## Earlier publications
+
+The complete publication history from the current EmoLab site and updated records will be migrated here.
