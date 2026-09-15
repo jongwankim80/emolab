@@ -1,2 +1,55 @@
-# Publications managed through the EmoLab CMS.
-# Entries will be added during content migration.
+publications:
+  - year: 2026
+    authors: "Kim, J."
+    title: "Comparing ChatGPT and human ratings of affective images"
+    journal: "Perception"
+    volume: "55(3), 295-298"
+    doi: "https://doi.org/10.1177/03010066251391729"
+    pdf: ""
+    osf: ""
+    code: ""
+    featured: true
+
+  - year: 2026
+    authors: "Kim, J."
+    title: "Structure-Based Classification Approach"
+    journal: "Applied Psychological Measurement"
+    volume: "50(1-2), 49-54"
+    doi: "https://doi.org/10.1177/01466216251360544"
+    pdf: ""
+    osf: ""
+    code: ""
+    featured: true
+
+  - year: 2026
+    authors: "Kim, J."
+    title: "Sweet Is Soft, Bitter Is Rough: Evidence for a Shared Emotional Dimension Across Taste and Touch"
+    journal: "Multisensory Research"
+    volume: "39(6), 597-619"
+    doi: "https://doi.org/10.1163/22134808-bja10189"
+    pdf: ""
+    osf: ""
+    code: ""
+    featured: true
+
+  - year: 2025
+    authors: "Kim, J., & Park, C."
+    title: "Beyond Choice: Affective Representations of Economic and Moral Decisions"
+    journal: "Behavioral Sciences"
+    volume: "15(4), 558"
+    doi: "https://doi.org/10.3390/bs15040558"
+    pdf: ""
+    osf: ""
+    code: ""
+    featured: false
+
+  - year: 2025
+    authors: "Jang, J., & Kim, J."
+    title: "Consistency of affective responses to naturalistic stimuli across individuals using intersubject correlation analysis based on neuroimaging data"
+    journal: "Brain and Cognition"
+    volume: "186, 106295"
+    doi: "https://doi.org/10.1016/j.bandc.2025.106295"
+    pdf: ""
+    osf: ""
+    code: ""
+    featured: false
