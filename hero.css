@@ -4,7 +4,7 @@
   width: 120%;
   min-height: 600px;
   margin-left: -10%;
-  transform: translateY(-2.5rem);
+  transform: translateY(-2rem);
   border-radius: 0;
   background: url("images/people/emolab-hero.png") center top / contain no-repeat;
 }
