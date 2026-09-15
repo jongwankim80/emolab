@@ -1,0 +1,104 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: members
+    label: Members
+    type: file
+    path: data/members.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: members
+        label: Lab members
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} — {role}"
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: role
+            label: Position / role
+            type: string
+            required: true
+          - name: group
+            label: Group
+            type: select
+            options:
+              values:
+                - value: pi
+                  label: Principal Investigator
+                - value: graduate
+                  label: Graduate Student
+                - value: undergraduate
+                  label: Undergraduate Researcher
+                - value: alumni
+                  label: Alumni
+          - name: research
+            label: Research interests
+            type: text
+          - name: email
+            label: Email
+            type: string
+          - name: photo
+            label: Photo
+            type: image
+          - name: current
+            label: Current member
+            type: boolean
+
+  - name: publications
+    label: Publications
+    type: file
+    path: data/publications.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: publications
+        label: Publications
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{year} — {title}"
+        fields:
+          - name: year
+            label: Year
+            type: number
+            required: true
+          - name: authors
+            label: Authors
+            type: text
+            required: true
+          - name: title
+            label: Title
+            type: text
+            required: true
+          - name: journal
+            label: Journal
+            type: string
+          - name: volume
+            label: Volume / issue / pages
+            type: string
+          - name: doi
+            label: DOI or publisher URL
+            type: string
+          - name: pdf
+            label: PDF URL
+            type: string
+          - name: osf
+            label: OSF URL
+            type: string
+          - name: code
+            label: Code URL
+            type: string
+          - name: featured
+            label: Feature on home page
+            type: boolean
