@@ -9,4 +9,4 @@ page-layout: full
 <p class="small-note">For additional and earlier publications, see <a href="https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en">Google Scholar</a>.</p>
 </div>
 
-{{< include _generated/publications.md >}}
+{{< include generated/publications.md >}}
