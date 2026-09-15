@@ -29,12 +29,13 @@ publications:
   - year: 2026
     month: 8
     status: published
-    authors: 조예슬, 김종완
-    title: 일반반려식물과의 교감이 우울 자각 성인의 정신건강에 미치는 영향
+    authors: 조예슬, 정순진, 이상미, 문지원, 최세나, 홍인경, 심영도, 김종완
+    title: 반려식물과의 교감이 우울 자각 성인의 정신건강에 미치는 영향
     journal: 감성과학
     volume: "29"
     issue: "4"
     pages: 39-54
+    doi: 10.14695/KJSOS.2026.29.4.39
     featured: false
   - year: 2026
     month: 6
