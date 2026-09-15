@@ -7,8 +7,10 @@ members:
     degree: "Ph.D."
     current_position: "Professor, Department of Psychology, Jeonbuk National University"
     research: "Affective neuroscience; multivariate methods; psychological representation; AI in psychological science"
-    email: ""
-    photo: ""
+    email: "jongwankim80@jbnu.ac.kr"
+    office: "Humanities & Social Sciences Building, Room 629"
+    phone: "+82-63-270-3917"
+    photo: "images/people/jongwan-kim.jpg"
     current: true
 
   - name: "Jeongwoo Lee"
@@ -20,6 +22,8 @@ members:
     current_position: ""
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: true
 
@@ -32,6 +36,8 @@ members:
     current_position: ""
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: true
 
@@ -44,41 +50,49 @@ members:
     current_position: ""
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: true
 
-  - name: "장준혁"
+  - name: "Junhyeok Jang"
     name_ko: "장준혁"
     role: "Alumnus"
     group: "alumni"
     year: "2024"
-    degree: "Master's"
-    current_position: "마이다스그룹 자인연구소"
+    degree: "M.A."
+    current_position: "MIDAS Group Zain Research Institute"
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: false
 
-  - name: "김현중"
+  - name: "Hyeonjung Kim"
     name_ko: "김현중"
     role: "Alumnus"
     group: "alumni"
     year: "2024"
-    degree: "Master's"
+    degree: "M.A."
     current_position: ""
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: false
 
-  - name: "박채리"
+  - name: "Chaery Park"
     name_ko: "박채리"
     role: "Alumna"
     group: "alumni"
     year: "2026"
-    degree: "Master's"
+    degree: "M.A."
     current_position: "Ph.D. student, University of Miami"
     research: ""
     email: ""
+    office: ""
+    phone: ""
     photo: ""
     current: false
