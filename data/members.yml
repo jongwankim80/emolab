@@ -11,7 +11,7 @@ members:
     photo: ""
     current: true
 
-  - name: "이정우"
+  - name: "Jeongwoo Lee"
     name_ko: "이정우"
     role: "Undergraduate Researcher"
     group: "undergraduate"
@@ -23,7 +23,7 @@ members:
     photo: ""
     current: true
 
-  - name: "박수아"
+  - name: "Sua Park"
     name_ko: "박수아"
     role: "Undergraduate Researcher"
     group: "undergraduate"
@@ -35,7 +35,7 @@ members:
     photo: ""
     current: true
 
-  - name: "이윤서"
+  - name: "Yunseo Lee"
     name_ko: "이윤서"
     role: "Undergraduate Researcher"
     group: "undergraduate"
