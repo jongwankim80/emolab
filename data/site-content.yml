@@ -1,0 +1,91 @@
+home:
+  hero:
+    eyebrow: "Emotion & Cognition Laboratory · JBNU"
+    title_before_highlight: "Understanding affective representations in"
+    title_highlight: "minds, brains, and machines."
+    intro: "We study how affective experience is structured across people, sensory modalities, biological systems, and artificial intelligence—and develop multivariate methods to make those structures visible."
+    primary_button: "Explore our research"
+    secondary_button: "Meet the lab"
+  research_section:
+    eyebrow: "What we study"
+    heading: "Four connected research themes"
+    intro: "Our work is organized around durable scientific questions rather than individual short-term projects."
+    theme_1_title: "Affective Representation"
+    theme_1_text: "How emotions and affective experiences are organized across sensory modalities, individuals, tasks, and stimulus domains."
+    theme_2_title: "Multivariate Methods"
+    theme_2_text: "Developing and applying methods that treat psychological patterns, geometry, and relational structure as primary scientific objects."
+    theme_3_title: "Brain & Physiology"
+    theme_3_text: "Studying affect and cognition with neuroimaging and psychophysiological measures, with emphasis on multivariate structure and generalization."
+    theme_4_title: "Humans & Artificial Intelligence"
+    theme_4_text: "Comparing human and artificial representational systems and using modern AI systems in psychological research."
+  selected_work:
+    eyebrow: "Selected work"
+    heading: "Recent publications"
+    link_text: "View all publications →"
+  team:
+    eyebrow: "People"
+    heading: "A small lab built around hands-on research."
+    intro: "EmoLab brings together students interested in affective science, cognitive neuroscience, quantitative methods, and psychological experimentation."
+    button_text: "Meet the lab"
+
+research:
+  intro:
+    eyebrow: "Research"
+    text: "EmoLab studies affective and cognitive representation across people, modalities, biological systems, and artificial intelligence. These four themes connect our behavioral, neuroimaging, physiological, and methodological work."
+  theme_1:
+    title: "Affective Representation"
+    summary: "How are emotions organized, and what aspects of that organization are shared across people and sensory modalities? We study the geometry of affective experience rather than treating each rating or stimulus as an isolated variable."
+    questions: "How similar are emotional representations across taste, touch, sound, images, and naturalistic stimuli? Which dimensions are modality-general, and which are modality-specific? How stable are these spaces across people and tasks?"
+    approaches: "multidimensional scaling, representational similarity analysis, cross-modal mapping, behavioral experiments."
+  theme_2:
+    title: "Multivariate Methods"
+    summary: "Many psychological questions concern patterns and relations among variables, not single measurements. We develop and adapt analysis methods that preserve this structure and make high-dimensional hypotheses testable."
+    questions_label: "Current directions"
+    questions: "classification based on relational structure, multivariate interaction tests, Procrustes-based spatial comparison, Bayesian multidimensional scaling, permutation and resampling methods."
+    approaches: "MDS, RSA, MVPA, classification, Procrustes analysis, simulation, Bayesian modeling."
+  theme_3:
+    title: "Brain & Physiology"
+    summary: "We investigate how affective and cognitive information is represented in neural and physiological activity. A recurring goal is to test whether representational structure generalizes across participants, tasks, and measurement contexts."
+    questions: "Which neural patterns carry valence and arousal information? Are representations preserved from encoding to recall? Can structure generalize across tasks or individuals?"
+    approaches: "fMRI, fNIRS, psychophysiology, intersubject analyses, multivariate decoding."
+  theme_4:
+    title: "Humans & Artificial Intelligence"
+    summary: "Modern AI provides both a comparison system and a new experimental tool for psychology. We examine where human and artificial judgments converge, where they differ, and what those differences reveal about representation."
+    questions: "Do LLMs and multimodal AI systems organize affective information like humans? When can AI act as an experimental respondent? How should human–AI similarity be quantified?"
+    approaches: "human–AI rating comparisons, representational similarity, cross-classification, AI-generated stimuli, large-scale language and image datasets."
+
+resources:
+  intro:
+    eyebrow: "Open science & methods"
+    text: "Analysis code, methodological tools, and reproducible research materials from the lab will be collected here as they become publicly available."
+  methods:
+    title: "Methods & software"
+    text: "Code and documentation for methodological work in multivariate analysis, classification, spatial comparison, and Bayesian modeling."
+  data:
+    title: "Data & materials"
+    text: "Public datasets, experiment materials, and supplementary resources associated with published work."
+  profiles:
+    title: "Research profiles"
+  note: "This page is intentionally kept selective: only materials intended for public reuse will be linked here."
+
+join:
+  intro:
+    eyebrow: "Join EmoLab"
+    text: "We welcome students who are curious about emotion, cognition, neuroscience, and quantitative methods—and who want to learn research by doing it."
+  graduate:
+    title: "Prospective Graduate Students"
+    text: "Graduate students in EmoLab are expected to take increasing ownership of research questions, experimental design, data analysis, and scientific writing. Prior programming experience is helpful but not required; willingness to learn quantitative methods is essential."
+    contact_text: "If you are considering graduate study, send a short introduction, your research interests, and a CV or transcript to"
+  undergraduate:
+    title: "Undergraduate Researchers"
+    text: "Undergraduate researchers typically begin with behavioral experiments, reading and discussion, basic statistics, and MATLAB or related analysis tools before moving toward an independent project."
+    contact_text: "Students at Jeonbuk National University who are interested in joining the lab are welcome to inquire by email."
+  contact:
+    heading: "Contact"
+    name: "Jongwan Kim, Ph.D."
+    title: "Professor, Department of Psychology"
+    university: "Jeonbuk National University"
+    office: "Humanities & Social Sciences Building, Room 629"
+    location: "Jeonju, Republic of Korea"
+    email: "jongwankim80@jbnu.ac.kr"
+    phone: "+82-63-270-3917"
