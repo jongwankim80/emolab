@@ -1,0 +1,11 @@
+---
+title: "People"
+page-layout: full
+---
+
+<div class="page-intro">
+<div class="eyebrow">EmoLab</div>
+<p>Our lab is intentionally small and research-intensive. Students work closely with the PI on experimental design, quantitative analysis, and scientific communication.</p>
+</div>
+
+{{< include _generated/people.md >}}

@@ -1,0 +1,12 @@
+---
+title: "Publications"
+page-layout: full
+---
+
+<div class="page-intro publications-intro">
+<div class="eyebrow">Publications</div>
+<p>Peer-reviewed journal articles from EmoLab's publication record. The list below is maintained as structured data so new papers can be added without manually editing this page.</p>
+<p class="small-note">For additional and earlier publications, see <a href="https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en">Google Scholar</a>.</p>
+</div>
+
+{{< include _generated/publications.md >}}

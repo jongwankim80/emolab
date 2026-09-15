@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "EmoLab"
+  site-url: "https://jongwankim80.github.io/emolab/"
+  navbar:
+    background: light
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: people.qmd
+        text: People
+      - href: research.qmd
+        text: Research
+      - href: publications.qmd
+        text: Publications
+      - href: resources.qmd
+        text: Resources
+      - href: join.qmd
+        text: Join Us
+    right:
+      - icon: github
+        href: https://github.com/jongwankim80/emolab
+        aria-label: GitHub
+  page-footer:
+    left: "Emotion & Cognition Laboratory · Department of Psychology · Jeonbuk National University"
+    right: "Jeonju, Republic of Korea"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  freeze: auto
