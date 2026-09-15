@@ -1,0 +1,17 @@
+---
+title: "Resources"
+---
+
+This page will collect open research resources developed or maintained by EmoLab.
+
+## Software & Methods
+
+Future entries may include laboratory toolboxes, analysis code, and methodological demonstrations.
+
+## Data & Open Science
+
+Selected OSF projects, datasets, analysis materials, and reproducible research resources will be linked here.
+
+## External Profiles
+
+Links to laboratory GitHub, OSF, and other research resources will be added as the site is populated.
