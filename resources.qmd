@@ -3,26 +3,4 @@ title: "Resources"
 page-layout: full
 ---
 
-<div class="page-intro">
-<div class="eyebrow">Open science & methods</div>
-<p>Analysis code, methodological tools, and reproducible research materials from the lab will be collected here as they become publicly available.</p>
-</div>
-
-::: {.resource-grid}
-::: {.resource-card}
-### Methods & software
-Code and documentation for methodological work in multivariate analysis, classification, spatial comparison, and Bayesian modeling.
-:::
-
-::: {.resource-card}
-### Data & materials
-Public datasets, experiment materials, and supplementary resources associated with published work.
-:::
-
-::: {.resource-card}
-### Research profiles
-[Google Scholar](https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0003-1316-1041) · [GitHub](https://github.com/jongwankim80)
-:::
-:::
-
-<div class="small-note resource-note">This page is intentionally kept selective: only materials intended for public reuse will be linked here.</div>
+{{< include generated/resources.md >}}
