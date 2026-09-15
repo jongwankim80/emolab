@@ -33,6 +33,28 @@ jobs:
       - name: Generate people and publication content
         run: python scripts/build_content.py
 
+      - name: Normalize generated CMS markdown
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          generated = Path('generated')
+          home = generated / 'home.md'
+          home_pubs = generated / 'home-publications.md'
+
+          text = home.read_text(encoding='utf-8')
+          include = '{{< include generated/home-publications.md >}}'
+          if include in text:
+              text = text.replace(include, home_pubs.read_text(encoding='utf-8'))
+          text = text.replace('::: {}', '::: {.cms-copy}')
+          home.write_text(text, encoding='utf-8')
+
+          for name in ('research.md', 'resources.md', 'join.md'):
+              path = generated / name
+              text = path.read_text(encoding='utf-8').replace('::: {}', '::: {.cms-copy}')
+              path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
