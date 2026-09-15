@@ -216,7 +216,7 @@ publications:
     journal: Cognition
     volume: "249"
     pages: "105830"
-    featured: false
+    featured: true
   - year: 2024
     month: 6
     status: published
