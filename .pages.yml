@@ -20,9 +20,12 @@ content:
             summary: "{name} — {role}"
         fields:
           - name: name
-            label: Name
+            label: Display name
             type: string
             required: true
+          - name: name_ko
+            label: Korean name
+            type: string
           - name: role
             label: Position / role
             type: string
@@ -40,6 +43,15 @@ content:
                   label: Undergraduate Researcher
                 - value: alumni
                   label: Alumni
+          - name: year
+            label: Year / graduation year
+            type: string
+          - name: degree
+            label: Degree
+            type: string
+          - name: current_position
+            label: Current position / affiliation
+            type: string
           - name: research
             label: Research interests
             type: text
