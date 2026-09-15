@@ -1,0 +1,25 @@
+---
+title: "People"
+---
+
+## Principal Investigator
+
+### Jongwan Kim, Ph.D.
+
+Professor, Department of Psychology, Jeonbuk National University
+
+Research interests: affective neuroscience, multivariate methods, psychological representation, and AI in psychological science.
+
+[Google Scholar](#) · [ORCID](#) · [Email](#) · [CV](#)
+
+## Graduate Students
+
+Current graduate students will appear here as profile cards managed through the site CMS.
+
+## Undergraduate Researchers
+
+Current undergraduate researchers will appear here as profile cards managed through the site CMS.
+
+## Alumni
+
+Former members will be retained here rather than deleted, with degree and current position where appropriate.
