@@ -2,12 +2,22 @@
 title: "Publications"
 ---
 
-Publications will be maintained as structured data so that new papers can be added through the CMS without manually editing this page.
+Publication records are maintained as structured data for simple updating through the CMS. This prototype currently contains a verified subset of recent journal articles; the complete record will be imported next.
 
 ## 2026
 
-Publication entries will appear here automatically.
+**Kim, J.** (2026). Comparing ChatGPT and human ratings of affective images. *Perception, 55*(3), 295–298. [DOI](https://doi.org/10.1177/03010066251391729)
+
+**Kim, J.** (2026). Structure-Based Classification Approach. *Applied Psychological Measurement, 50*(1–2), 49–54. [DOI](https://doi.org/10.1177/01466216251360544)
+
+**Kim, J.** (2026). Sweet Is Soft, Bitter Is Rough: Evidence for a Shared Emotional Dimension Across Taste and Touch. *Multisensory Research, 39*(6), 597–619. [DOI](https://doi.org/10.1163/22134808-bja10189)
+
+## 2025
+
+**Jang, J., & Kim, J.** (2025). Consistency of affective responses to naturalistic stimuli across individuals using intersubject correlation analysis based on neuroimaging data. *Brain and Cognition, 186*, 106295. [DOI](https://doi.org/10.1016/j.bandc.2025.106295)
+
+**Kim, J., & Park, C.** (2025). Beyond Choice: Affective Representations of Economic and Moral Decisions. *Behavioral Sciences, 15*(4), 558. [DOI](https://doi.org/10.3390/bs15040558)
 
 ## Earlier publications
 
-The complete publication history from the current EmoLab site and updated records will be migrated here.
+The complete publication history will be migrated from the lab's publication records. Conference presentations will be kept separate from peer-reviewed publications rather than mixed into this page.
