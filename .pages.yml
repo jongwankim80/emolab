@@ -9,6 +9,18 @@ content:
     path: data/site-content.yml
     format: yaml
     fields:
+      - name: sitewide
+        label: Site-wide
+        type: object
+        fields:
+          - { name: title, label: Site title, type: string }
+          - name: footer
+            label: Footer
+            type: object
+            fields:
+              - { name: left, label: Left footer text, type: text }
+              - { name: right, label: Right footer text, type: text }
+
       - name: home
         label: Home
         type: object
