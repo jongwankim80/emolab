@@ -1,0 +1,50 @@
+---
+title: "EmoLab"
+page-layout: full
+---
+
+::: {.hero}
+## Emotion & Cognition Laboratory
+
+### Understanding how affective experiences are represented in minds, brains, and machines.
+
+Department of Psychology · Jeonbuk National University
+
+[Explore our research](research.qmd){.btn .btn-primary} [Meet the lab](people.qmd){.btn .btn-outline-primary}
+:::
+
+## What we study
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6 .research-card}
+### Affective Representation
+How emotions and affective experiences are organized across sensory modalities, individuals, and cognitive systems.
+:::
+
+::: {.g-col-12 .g-col-md-6 .research-card}
+### Multivariate Methods
+Developing and applying multivariate approaches for understanding psychological structure and representation.
+:::
+
+::: {.g-col-12 .g-col-md-6 .research-card}
+### Brain & Physiology
+Studying affect and cognition with neuroimaging and psychophysiological measures.
+:::
+
+::: {.g-col-12 .g-col-md-6 .research-card}
+### Humans & Artificial Intelligence
+Using AI as a model, comparison system, and experimental participant in psychological science.
+:::
+:::
+
+## Recent & selected work
+
+This section will automatically highlight selected publications from the lab.
+
+[View all publications →](publications.qmd)
+
+## Our team
+
+EmoLab brings together students interested in affective science, cognitive neuroscience, computational methods, and psychological experimentation.
+
+[Meet the lab →](people.qmd)
