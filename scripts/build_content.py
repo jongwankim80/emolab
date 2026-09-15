@@ -4,7 +4,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-OUT = ROOT / "_generated"
+OUT = ROOT / "generated"
 OUT.mkdir(exist_ok=True)
 
 
