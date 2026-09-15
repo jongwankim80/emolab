@@ -1,35 +1,11 @@
 ---
 title: "People"
+page-layout: full
 ---
 
-## Principal Investigator
+<div class="page-intro">
+<div class="eyebrow">EmoLab</div>
+<p>Our lab is intentionally small and research-intensive. Students work closely with the PI on experimental design, quantitative analysis, and scientific communication.</p>
+</div>
 
-### Jongwan Kim, Ph.D. (김종완)
-
-Professor, Department of Psychology, Jeonbuk National University
-
-Research interests: affective neuroscience, multivariate methods, psychological representation, and AI in psychological science.
-
-[Google Scholar](https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0003-1316-1041) · [Email](mailto:jongwankim80@jbnu.ac.kr)
-
-## Undergraduate Researchers
-
-### 이정우
-4th-year undergraduate researcher
-
-### 박수아
-4th-year undergraduate researcher
-
-### 이윤서
-3rd-year undergraduate researcher
-
-## Alumni
-
-### 장준혁
-M.A., 2024 · 마이다스그룹 자인연구소
-
-### 김현중
-M.A., 2024
-
-### 박채리
-M.A., 2026 · Ph.D. student, University of Miami
+{{< include _generated/people.md >}}
