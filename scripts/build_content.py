@@ -268,14 +268,25 @@ research_parts = [f'''::: {{.page-intro}}
 {txt(research['intro']['text'])}
 :::
 ''']
+
+theme_icons = {
+    1: "images/research/affect.png",
+    2: "images/research/methods.png",
+    3: "images/research/brain.png",
+    4: "images/research/ai.png",
+}
+
 for i in range(1, 5):
     th = research[f'theme_{i}']
     qlabel = th.get('questions_label') or 'Questions we ask'
     research_parts.append(f'''::: {{.research-theme}}
+::: {{.theme-side}}
 ::: {{.theme-number}}
 0{i}
 :::
-::: {{}}
+<img src="{theme_icons[i]}" alt="" class="theme-icon" aria-hidden="true">
+:::
+::: {{.theme-copy}}
 ## {txt(th['title'])}
 
 {txt(th['summary'])}
