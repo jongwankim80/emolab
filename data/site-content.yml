@@ -103,9 +103,7 @@ people_page:
 publications_page:
   intro:
     eyebrow: Publications
-    text: Peer-reviewed journal articles from EmoLab's publication record. The list
-      below is maintained as structured data so new papers can be added without
-      manually editing this page.
+    text: Peer-reviewed journal articles from EmoLab's publication record.
     note_before_link: For additional and earlier publications, see
     link_text: Google Scholar
     link_url: https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en
