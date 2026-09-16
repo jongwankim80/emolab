@@ -97,11 +97,15 @@ research:
 people_page:
   intro:
     eyebrow: EmoLab
-    text: Our lab is intentionally small and research-intensive. Students work closely with the PI on experimental design, quantitative analysis, and scientific communication.
+    text: Our lab is small but research-intensive. Students work very closely with
+      the PI on experimental design, quantitative analysis, and scientific
+      communication.
 publications_page:
   intro:
     eyebrow: Publications
-    text: Peer-reviewed journal articles from EmoLab's publication record. The list below is maintained as structured data so new papers can be added without manually editing this page.
+    text: Peer-reviewed journal articles from EmoLab's publication record. The list
+      below is maintained as structured data so new papers can be added without
+      manually editing this page.
     note_before_link: For additional and earlier publications, see
     link_text: Google Scholar
     link_url: https://scholar.google.com/citations?user=xs8AkecAAAAJ&hl=en
