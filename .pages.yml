@@ -110,6 +110,31 @@ content:
               - { name: questions, label: Questions we ask, type: text }
               - { name: approaches, label: Approaches, type: text }
 
+      - name: people_page
+        label: People page
+        type: object
+        fields:
+          - name: intro
+            label: Page introduction
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: text, label: Intro paragraph, type: text }
+
+      - name: publications_page
+        label: Publications page
+        type: object
+        fields:
+          - name: intro
+            label: Page introduction
+            type: object
+            fields:
+              - { name: eyebrow, label: Small heading, type: string }
+              - { name: text, label: Intro paragraph, type: text }
+              - { name: note_before_link, label: Note before link, type: text }
+              - { name: link_text, label: Link text, type: string }
+              - { name: link_url, label: Link URL, type: string }
+
       - name: resources
         label: Resources page
         type: object
