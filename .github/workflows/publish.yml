@@ -36,6 +36,9 @@ jobs:
       - name: Generate fixed Research layout
         run: python scripts/build_research.py
 
+      - name: Generate CMS-driven page introductions
+        run: python scripts/build_page_intros.py
+
       - name: Normalize generated CMS markdown and site-wide text
         run: |
           python - <<'PY'
