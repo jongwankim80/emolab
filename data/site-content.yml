@@ -14,7 +14,7 @@ home:
     primary_button: Explore our research
     secondary_button: Meet the lab
   research_section:
-    eyebrow: What we study
+    eyebrow: WHAT WE STUDY
     heading: Research themes
     intro: Our work is organized around durable scientific questions in affective
       science.
@@ -31,11 +31,11 @@ home:
     theme_4_text: Comparing human and artificial representational systems and using
       modern AI systems in psychological research.
   selected_work:
-    eyebrow: Selected work
+    eyebrow: SELECTED WORK
     heading: Featured publications
     link_text: View all publications →
   team:
-    eyebrow: People
+    eyebrow: PEOPLE
     heading: A small lab built around hands-on research.
     intro: EmoLab brings together students interested in affective science,
       cognitive neuroscience, quantitative methods, and psychological
