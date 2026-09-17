@@ -4,7 +4,7 @@ project:
 
 website:
   title: "EmoLab"
-  site-url: "https://jongwankim80.github.io/emolab/"
+  site-url: "https://emolab.jbnu.ac.kr/"
   navbar:
     background: light
     pinned: true
