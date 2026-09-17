@@ -45,7 +45,7 @@ main.content { max-width: var(--emolab-max); }
 }
 .eyebrow {
   color: var(--emolab-accent);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: .13em;
   font-size: .76rem;
   font-weight: 800;
