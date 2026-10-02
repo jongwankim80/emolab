@@ -12,6 +12,11 @@ members:
     phone: +82-63-270-3917
     photo: /images/people/jongwan-kim.png
     current: true
+  - name: Yeseul Jo
+    name_ko: 조예슬
+    role: Doctoral Student
+    group: graduate
+    current: false
   - name: Jeongwoo Lee
     name_ko: 이정우
     role: Undergraduate Researcher
@@ -52,9 +57,4 @@ members:
     year: "2026"
     degree: M.A.
     current_position: Ph.D. student, University of Miami
-    current: false
-  - name: Yeseul Jo
-    name_ko: 조예슬
-    role: Doctoral Student
-    group: graduate
     current: false
