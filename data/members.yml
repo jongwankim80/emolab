@@ -16,7 +16,7 @@ members:
     name_ko: 조예슬
     role: Doctoral Student
     group: graduate
-    current: false
+    current: true
   - name: Jeongwoo Lee
     name_ko: 이정우
     role: Undergraduate Researcher
