@@ -1,3 +1,5 @@
+#title-block-header { display: none; }
+
 :root {
   --atlas-ink: #18212b;
   --atlas-muted: #667085;
