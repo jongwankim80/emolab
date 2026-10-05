@@ -4,6 +4,7 @@ page-layout: full
 toc: false
 ---
 
+```{=html}
 <link rel="stylesheet" href="atlas.css">
 
 <div class="atlas-shell">
@@ -164,3 +165,4 @@ toc: false
 </div>
 
 <script src="atlas.js"></script>
+```
