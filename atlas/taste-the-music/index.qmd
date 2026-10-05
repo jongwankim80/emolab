@@ -40,9 +40,9 @@ toc: false
     <div class="atlas-control-group">
       <h3>Modality</h3>
       <div class="atlas-chip-row">
-        <button class="atlas-chip active" type="button" disabled>Both</button>
-        <button class="atlas-chip" type="button" disabled>Taste</button>
-        <button class="atlas-chip" type="button" disabled>Music</button>
+        <button class="atlas-chip active" type="button" data-modality="both" aria-pressed="true">Both</button>
+        <button class="atlas-chip" type="button" data-modality="taste" aria-pressed="false">Taste</button>
+        <button class="atlas-chip" type="button" data-modality="music" aria-pressed="false">Music</button>
       </div>
     </div>
 
@@ -58,10 +58,10 @@ toc: false
     <div class="atlas-control-group">
       <h3>Highlight</h3>
       <div class="atlas-category-list" aria-label="Taste category filters">
-        <button class="atlas-category sweet" type="button" disabled><span></span>Sweet</button>
-        <button class="atlas-category bitter" type="button" disabled><span></span>Bitter</button>
-        <button class="atlas-category sour" type="button" disabled><span></span>Sour</button>
-        <button class="atlas-category salty" type="button" disabled><span></span>Salty</button>
+        <button class="atlas-category sweet" type="button" data-category="sweet" aria-pressed="false"><span></span>Sweet</button>
+        <button class="atlas-category bitter" type="button" data-category="bitter" aria-pressed="false"><span></span>Bitter</button>
+        <button class="atlas-category sour" type="button" data-category="sour" aria-pressed="false"><span></span>Sour</button>
+        <button class="atlas-category salty" type="button" data-category="salty" aria-pressed="false"><span></span>Salty</button>
       </div>
     </div>
   </aside>
@@ -80,7 +80,8 @@ toc: false
       <div class="atlas-zero-line atlas-zero-line-y"></div>
       <div class="atlas-axis-label atlas-axis-x">Valence</div>
       <div class="atlas-axis-label atlas-axis-y">Arousal</div>
-      <div id="atlas-points-layer" class="atlas-points-layer" aria-hidden="true"></div>
+      <div id="atlas-points-layer" class="atlas-points-layer"></div>
+      <div id="atlas-tooltip" class="atlas-tooltip" role="tooltip" hidden></div>
     </div>
 
     <div class="atlas-plot-caption">
@@ -98,7 +99,9 @@ toc: false
 
     <section class="atlas-info-block">
       <h3>Selected item</h3>
-      <p class="atlas-muted">Hover over a stimulus or vector to see its details here.</p>
+      <div id="atlas-selected-item" class="atlas-selected-item" aria-live="polite">
+        <p class="atlas-muted">Hover over a stimulus to see its details here.</p>
+      </div>
     </section>
 
     <section class="atlas-info-block">
