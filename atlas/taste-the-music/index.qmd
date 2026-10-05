@@ -49,9 +49,9 @@ toc: false
     <div class="atlas-control-group">
       <h3>Vectors</h3>
       <div class="atlas-chip-row">
-        <button class="atlas-chip" type="button" disabled>Off</button>
-        <button class="atlas-chip active" type="button" disabled>Key</button>
-        <button class="atlas-chip" type="button" disabled>All</button>
+        <button class="atlas-chip" type="button" data-vectors="off" aria-pressed="false">Off</button>
+        <button class="atlas-chip active" type="button" data-vectors="key" aria-pressed="true">Key</button>
+        <button class="atlas-chip" type="button" data-vectors="all" aria-pressed="false">All</button>
       </div>
     </div>
 
@@ -80,7 +80,7 @@ toc: false
       <div class="atlas-zero-line atlas-zero-line-y"></div>
       <div class="atlas-axis-label atlas-axis-x">Valence</div>
       <div class="atlas-axis-label atlas-axis-y">Arousal</div>
-      <div id="atlas-points-layer" class="atlas-points-layer"></div>
+      <svg id="atlas-vectors-layer" class="atlas-vectors-layer" viewBox="0 0 100 100" aria-hidden="true"></svg>\n      <div id="atlas-points-layer" class="atlas-points-layer"></div>
       <div id="atlas-tooltip" class="atlas-tooltip" role="tooltip" hidden></div>
     </div>
 
