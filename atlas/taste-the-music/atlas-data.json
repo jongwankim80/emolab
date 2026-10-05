@@ -1,0 +1,1058 @@
+{
+  "project": "EMOLAB Emotion Space Atlas",
+  "version": "0.1-data",
+  "paper": {
+    "title": "Taste the music: Modality-general representation of affective states derived from auditory and gustatory stimuli",
+    "authors": [
+      "Chaery Park",
+      "Jongwan Kim"
+    ],
+    "journal": "Cognition",
+    "volume": 249,
+    "year": 2024,
+    "article": "105830",
+    "doi": "10.1016/j.cognition.2024.105830"
+  },
+  "analysis": {
+    "n_participants": 28,
+    "n_stimuli": 16,
+    "n_rating_scales": 18,
+    "distance": "1 - Pearson correlation",
+    "mds": "classical MDS (MATLAB cmdscale), 3 dimensions",
+    "rotation": "MATLAB procrustes to design matrix",
+    "stress": {
+      "1d": 0.294,
+      "2d": 0.123,
+      "3d": 0.072
+    },
+    "dimension_correlations_published": {
+      "modality": 0.35,
+      "valence": 0.76,
+      "arousal": 0.9
+    },
+    "dimension_correlations_reproduced": {
+      "modality": 0.3466964,
+      "valence": 0.75840259,
+      "arousal": 0.90473764
+    }
+  },
+  "display_convention": {
+    "modality": "source orientation retained (taste tends left, music tends right)",
+    "valence": "source coordinate multiplied by -1 so higher display values correspond to more positive affect",
+    "arousal": "source coordinate multiplied by -1 so higher display values correspond to higher arousal",
+    "note": "Axis reflections do not change MDS geometry; source coordinates are retained alongside display coordinates."
+  },
+  "stimuli": [
+    {
+      "id": "taste_sweet_1",
+      "display_name": "Chocolate milk",
+      "modality": "taste",
+      "category": "sweet",
+      "mapping_status": "code_exact",
+      "source_coordinates": {
+        "modality": -0.059233381,
+        "valence": -1.691349394,
+        "arousal": 0.340491484
+      },
+      "display_coordinates": {
+        "modality": -0.059233381,
+        "valence": 1.691349394,
+        "arousal": -0.340491484
+      }
+    },
+    {
+      "id": "taste_sweet_2",
+      "display_name": "Sikhye",
+      "modality": "taste",
+      "category": "sweet",
+      "mapping_status": "code_exact",
+      "source_coordinates": {
+        "modality": 0.025197197,
+        "valence": -0.887114431,
+        "arousal": -0.375297985
+      },
+      "display_coordinates": {
+        "modality": 0.025197197,
+        "valence": 0.887114431,
+        "arousal": 0.375297985
+      }
+    },
+    {
+      "id": "taste_bitter_1",
+      "display_name": "Green tea powder",
+      "modality": "taste",
+      "category": "bitter",
+      "mapping_status": "code_exact",
+      "source_coordinates": {
+        "modality": 0.10642876,
+        "valence": 0.940474407,
+        "arousal": 0.4928105
+      },
+      "display_coordinates": {
+        "modality": 0.10642876,
+        "valence": -0.940474407,
+        "arousal": -0.4928105
+      }
+    },
+    {
+      "id": "taste_bitter_2",
+      "display_name": "Pu’er tea powder",
+      "modality": "taste",
+      "category": "bitter",
+      "mapping_status": "code_exact",
+      "source_coordinates": {
+        "modality": -0.182152293,
+        "valence": 1.53499348,
+        "arousal": 0.498253418
+      },
+      "display_coordinates": {
+        "modality": -0.182152293,
+        "valence": -1.53499348,
+        "arousal": -0.498253418
+      }
+    },
+    {
+      "id": "taste_sour_1",
+      "display_name": "Grapefruit vinegar",
+      "modality": "taste",
+      "category": "sour",
+      "mapping_status": "paper_term_for_code_micho",
+      "source_coordinates": {
+        "modality": 0.094065916,
+        "valence": -0.391210174,
+        "arousal": -1.45349182
+      },
+      "display_coordinates": {
+        "modality": 0.094065916,
+        "valence": 0.391210174,
+        "arousal": 1.45349182
+      }
+    },
+    {
+      "id": "taste_sour_2",
+      "display_name": "Lemon juice",
+      "modality": "taste",
+      "category": "sour",
+      "mapping_status": "code_exact",
+      "source_coordinates": {
+        "modality": 0.179565982,
+        "valence": 1.322934055,
+        "arousal": -1.216686605
+      },
+      "display_coordinates": {
+        "modality": 0.179565982,
+        "valence": -1.322934055,
+        "arousal": 1.216686605
+      }
+    },
+    {
+      "id": "taste_salty_1",
+      "display_name": "Salt solution",
+      "modality": "taste",
+      "category": "salty",
+      "mapping_status": "paper_term_salt_code_saltwater",
+      "source_coordinates": {
+        "modality": -0.749978776,
+        "valence": 0.614582776,
+        "arousal": 0.107916493
+      },
+      "display_coordinates": {
+        "modality": -0.749978776,
+        "valence": -0.614582776,
+        "arousal": -0.107916493
+      }
+    },
+    {
+      "id": "taste_salty_2",
+      "display_name": "Buckwheat soy sauce",
+      "modality": "taste",
+      "category": "salty",
+      "mapping_status": "paper_term_for_code_soba",
+      "source_coordinates": {
+        "modality": -1.035041048,
+        "valence": -0.536151087,
+        "arousal": 0.188442029
+      },
+      "display_coordinates": {
+        "modality": -1.035041048,
+        "valence": 0.536151087,
+        "arousal": -0.188442029
+      }
+    },
+    {
+      "id": "music_sweet_1",
+      "display_name": "Sweet music 1",
+      "modality": "music",
+      "category": "sweet",
+      "mapping_status": "internal_S1",
+      "source_coordinates": {
+        "modality": 0.288209342,
+        "valence": -1.764287809,
+        "arousal": -0.106087486
+      },
+      "display_coordinates": {
+        "modality": 0.288209342,
+        "valence": 1.764287809,
+        "arousal": 0.106087486
+      },
+      "paper_category_titles": [
+        "George Frideric Handel — Harp concerto in B op.46, HWV.294",
+        "Beethoven — Violin Sonata No.5 “spring”"
+      ]
+    },
+    {
+      "id": "music_sweet_2",
+      "display_name": "Sweet music 2",
+      "modality": "music",
+      "category": "sweet",
+      "mapping_status": "internal_S2",
+      "source_coordinates": {
+        "modality": 0.199406658,
+        "valence": -1.675602079,
+        "arousal": 0.356088957
+      },
+      "display_coordinates": {
+        "modality": 0.199406658,
+        "valence": 1.675602079,
+        "arousal": -0.356088957
+      },
+      "paper_category_titles": [
+        "George Frideric Handel — Harp concerto in B op.46, HWV.294",
+        "Beethoven — Violin Sonata No.5 “spring”"
+      ]
+    },
+    {
+      "id": "music_bitter_1",
+      "display_name": "Bitter music 1",
+      "modality": "music",
+      "category": "bitter",
+      "mapping_status": "internal_B1",
+      "source_coordinates": {
+        "modality": 1.154676905,
+        "valence": 0.038681278,
+        "arousal": 1.03202472
+      },
+      "display_coordinates": {
+        "modality": 1.154676905,
+        "valence": -0.038681278,
+        "arousal": -1.03202472
+      },
+      "paper_category_titles": [
+        "Pyotr Il’yich Tchaikovsky — Theme and Variations (Cello solo)",
+        "Dmitrii Shostakovich — Cello Concerto No.2 in G major op.126 Natalia G"
+      ]
+    },
+    {
+      "id": "music_bitter_2",
+      "display_name": "Bitter music 2",
+      "modality": "music",
+      "category": "bitter",
+      "mapping_status": "internal_B2",
+      "source_coordinates": {
+        "modality": 1.154256931,
+        "valence": 0.562420548,
+        "arousal": 1.142562648
+      },
+      "display_coordinates": {
+        "modality": 1.154256931,
+        "valence": -0.562420548,
+        "arousal": -1.142562648
+      },
+      "paper_category_titles": [
+        "Pyotr Il’yich Tchaikovsky — Theme and Variations (Cello solo)",
+        "Dmitrii Shostakovich — Cello Concerto No.2 in G major op.126 Natalia G"
+      ]
+    },
+    {
+      "id": "music_sour_1",
+      "display_name": "Sour music 1",
+      "modality": "music",
+      "category": "sour",
+      "mapping_status": "internal_SO1",
+      "source_coordinates": {
+        "modality": -0.230056465,
+        "valence": 1.778004633,
+        "arousal": -0.901408584
+      },
+      "display_coordinates": {
+        "modality": -0.230056465,
+        "valence": -1.778004633,
+        "arousal": 0.901408584
+      },
+      "paper_category_titles": [
+        "Matt Ertz — Fall from Grace",
+        "Zach Zubow — Keys"
+      ]
+    },
+    {
+      "id": "music_sour_2",
+      "display_name": "Sour music 2",
+      "modality": "music",
+      "category": "sour",
+      "mapping_status": "internal_SO2",
+      "source_coordinates": {
+        "modality": -0.645490104,
+        "valence": 1.22762108,
+        "arousal": -0.579453216
+      },
+      "display_coordinates": {
+        "modality": -0.645490104,
+        "valence": -1.22762108,
+        "arousal": 0.579453216
+      },
+      "paper_category_titles": [
+        "Matt Ertz — Fall from Grace",
+        "Zach Zubow — Keys"
+      ]
+    },
+    {
+      "id": "music_salty_1",
+      "display_name": "Salty music 1",
+      "modality": "music",
+      "category": "salty",
+      "mapping_status": "internal_SA1",
+      "source_coordinates": {
+        "modality": -0.618828734,
+        "valence": -0.377138104,
+        "arousal": 0.142164821
+      },
+      "display_coordinates": {
+        "modality": -0.618828734,
+        "valence": 0.377138104,
+        "arousal": -0.142164821
+      },
+      "paper_category_titles": [
+        "Sodagreen — little love song (taepyeongso version)",
+        "Jean Sibelius — Violin Concerto in D minor"
+      ]
+    },
+    {
+      "id": "music_salty_2",
+      "display_name": "Salty music 2",
+      "modality": "music",
+      "category": "salty",
+      "mapping_status": "internal_SA2",
+      "source_coordinates": {
+        "modality": 0.318973111,
+        "valence": -0.696859177,
+        "arousal": 0.331670626
+      },
+      "display_coordinates": {
+        "modality": 0.318973111,
+        "valence": 0.696859177,
+        "arousal": -0.331670626
+      },
+      "paper_category_titles": [
+        "Sodagreen — little love song (taepyeongso version)",
+        "Jean Sibelius — Violin Concerto in D minor"
+      ]
+    }
+  ],
+  "vectors": [
+    {
+      "id": "sweet",
+      "label": "Sweet",
+      "group": "taste",
+      "r2": 0.863978972,
+      "beta_source": {
+        "modality": -0.072160102,
+        "valence": -1.360428383,
+        "arousal": -0.416768488
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.045763006,
+          -0.862766139
+        ],
+        "valence_arousal": [
+          -0.82608381,
+          -0.253071536
+        ],
+        "modality_arousal": [
+          -0.147397947,
+          -0.851312815
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.045763006,
+          0.862766139
+        ],
+        "valence_arousal": [
+          0.82608381,
+          0.253071536
+        ],
+        "modality_arousal": [
+          -0.147397947,
+          0.851312815
+        ]
+      }
+    },
+    {
+      "id": "bitter",
+      "label": "Bitter",
+      "group": "taste",
+      "r2": 0.8403906,
+      "beta_source": {
+        "modality": 0.863186372,
+        "valence": 0.881944781,
+        "arousal": 1.059458901
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.587824387,
+          0.600598744
+        ],
+        "valence_arousal": [
+          0.53766753,
+          0.645886979
+        ],
+        "modality_arousal": [
+          0.530823761,
+          0.651523213
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.587824387,
+          -0.600598744
+        ],
+        "valence_arousal": [
+          -0.53766753,
+          -0.645886979
+        ],
+        "modality_arousal": [
+          0.530823761,
+          -0.651523213
+        ]
+      }
+    },
+    {
+      "id": "sour",
+      "label": "Sour",
+      "group": "taste",
+      "r2": 0.841151429,
+      "beta_source": {
+        "modality": 0.939158187,
+        "valence": 0.222974141,
+        "arousal": -2.182560004
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.818401843,
+          0.194304272
+        ],
+        "valence_arousal": [
+          0.085488534,
+          -0.836795935
+        ],
+        "modality_arousal": [
+          0.332474554,
+          -0.77265542
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.818401843,
+          -0.194304272
+        ],
+        "valence_arousal": [
+          -0.085488534,
+          0.836795935
+        ],
+        "modality_arousal": [
+          0.332474554,
+          0.77265542
+        ]
+      }
+    },
+    {
+      "id": "salty",
+      "label": "Salty",
+      "group": "taste",
+      "r2": 0.497791501,
+      "beta_source": {
+        "modality": -1.200386804,
+        "valence": 0.284356215,
+        "arousal": 0.40350482
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.484386203,
+          0.11474487
+        ],
+        "valence_arousal": [
+          0.286751088,
+          0.406903174
+        ],
+        "modality_arousal": [
+          -0.471846876,
+          0.158609282
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.484386203,
+          -0.11474487
+        ],
+        "valence_arousal": [
+          -0.286751088,
+          -0.406903174
+        ],
+        "modality_arousal": [
+          -0.471846876,
+          -0.158609282
+        ]
+      }
+    },
+    {
+      "id": "desire",
+      "label": "Desire",
+      "group": "emotion",
+      "r2": 0.855067776,
+      "beta_source": {
+        "modality": 0.676214577,
+        "valence": -0.249711944,
+        "arousal": 0.270056399
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.802123456,
+          -0.296207467
+        ],
+        "valence_arousal": [
+          -0.580513873,
+          0.627809322
+        ],
+        "modality_arousal": [
+          0.794084272,
+          0.317129424
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.802123456,
+          0.296207467
+        ],
+        "valence_arousal": [
+          0.580513873,
+          -0.627809322
+        ],
+        "modality_arousal": [
+          0.794084272,
+          -0.317129424
+        ]
+      }
+    },
+    {
+      "id": "anger",
+      "label": "Anger",
+      "group": "emotion",
+      "r2": 0.92891447,
+      "beta_source": {
+        "modality": -0.044796306,
+        "valence": 0.69787491,
+        "arousal": -0.337863449
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.059504179,
+          0.927006659
+        ],
+        "valence_arousal": [
+          0.836085427,
+          -0.404775558
+        ],
+        "modality_arousal": [
+          -0.122093511,
+          -0.920855726
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.059504179,
+          -0.927006659
+        ],
+        "valence_arousal": [
+          -0.836085427,
+          0.404775558
+        ],
+        "modality_arousal": [
+          -0.122093511,
+          0.920855726
+        ]
+      }
+    },
+    {
+      "id": "admire",
+      "label": "Admire",
+      "group": "emotion",
+      "r2": 0.798851587,
+      "beta_source": {
+        "modality": 0.552410791,
+        "valence": -0.64246312,
+        "arousal": -0.196889153
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.520824344,
+          -0.605727547
+        ],
+        "valence_arousal": [
+          -0.763789686,
+          -0.234070875
+        ],
+        "modality_arousal": [
+          0.752484629,
+          -0.268199072
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.520824344,
+          0.605727547
+        ],
+        "valence_arousal": [
+          0.763789686,
+          0.234070875
+        ],
+        "modality_arousal": [
+          0.752484629,
+          0.268199072
+        ]
+      }
+    },
+    {
+      "id": "annoyed",
+      "label": "Annoyed",
+      "group": "emotion",
+      "r2": 0.953774175,
+      "beta_source": {
+        "modality": -0.455641357,
+        "valence": 0.954775913,
+        "arousal": -0.585364202
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.410784136,
+          0.86077963
+        ],
+        "valence_arousal": [
+          0.813121143,
+          -0.498516985
+        ],
+        "modality_arousal": [
+          -0.585847535,
+          -0.75264058
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.410784136,
+          -0.86077963
+        ],
+        "valence_arousal": [
+          -0.813121143,
+          0.498516985
+        ],
+        "modality_arousal": [
+          -0.585847535,
+          0.75264058
+        ]
+      }
+    },
+    {
+      "id": "pleasant_surprise",
+      "label": "Pleasant surprise",
+      "group": "emotion",
+      "r2": 0.955738561,
+      "beta_source": {
+        "modality": -0.004907597,
+        "valence": -0.986461075,
+        "arousal": -0.190371887
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.004754695,
+          -0.955726734
+        ],
+        "valence_arousal": [
+          -0.93842341,
+          -0.181101353
+        ],
+        "modality_arousal": [
+          -0.024629802,
+          -0.955421148
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.004754695,
+          0.955726734
+        ],
+        "valence_arousal": [
+          0.93842341,
+          0.181101353
+        ],
+        "modality_arousal": [
+          -0.024629802,
+          0.955421148
+        ]
+      }
+    },
+    {
+      "id": "unpleasant_surprise",
+      "label": "Unpleasant surprise",
+      "group": "emotion",
+      "r2": 0.967399893,
+      "beta_source": {
+        "modality": -0.431148996,
+        "valence": 0.898630849,
+        "arousal": -0.65103291
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.418471095,
+          0.872206682
+        ],
+        "valence_arousal": [
+          0.78341357,
+          -0.567561214
+        ],
+        "modality_arousal": [
+          -0.534150273,
+          -0.806564343
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.418471095,
+          -0.872206682
+        ],
+        "valence_arousal": [
+          -0.78341357,
+          0.567561214
+        ],
+        "modality_arousal": [
+          -0.534150273,
+          0.806564343
+        ]
+      }
+    },
+    {
+      "id": "enjoyment",
+      "label": "Enjoyment",
+      "group": "emotion",
+      "r2": 0.878587244,
+      "beta_source": {
+        "modality": -0.200845554,
+        "valence": -1.210547671,
+        "arousal": -0.051918467
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.143803208,
+          -0.866738821
+        ],
+        "valence_arousal": [
+          -0.877780314,
+          -0.037646603
+        ],
+        "modality_arousal": [
+          -0.85062652,
+          -0.219886494
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.143803208,
+          0.866738821
+        ],
+        "valence_arousal": [
+          0.877780314,
+          0.037646603
+        ],
+        "modality_arousal": [
+          -0.85062652,
+          0.219886494
+        ]
+      }
+    },
+    {
+      "id": "disappointed",
+      "label": "Disappointed",
+      "group": "emotion",
+      "r2": 0.916359795,
+      "beta_source": {
+        "modality": 0.264676167,
+        "valence": 0.672549735,
+        "arousal": 0.197198974
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.335574536,
+          0.852704524
+        ],
+        "valence_arousal": [
+          0.879339486,
+          0.257832002
+        ],
+        "modality_arousal": [
+          0.734827441,
+          0.547488726
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.335574536,
+          -0.852704524
+        ],
+        "valence_arousal": [
+          -0.879339486,
+          -0.257832002
+        ],
+        "modality_arousal": [
+          0.734827441,
+          -0.547488726
+        ]
+      }
+    },
+    {
+      "id": "satisfaction",
+      "label": "Satisfaction",
+      "group": "emotion",
+      "r2": 0.898514592,
+      "beta_source": {
+        "modality": 0.078244201,
+        "valence": -1.019703689,
+        "arousal": 0.159193759
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.068743007,
+          -0.895881059
+        ],
+        "valence_arousal": [
+          -0.887761141,
+          0.138595196
+        ],
+        "modality_arousal": [
+          0.396337123,
+          0.806377925
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.068743007,
+          0.895881059
+        ],
+        "valence_arousal": [
+          0.887761141,
+          -0.138595196
+        ],
+        "modality_arousal": [
+          0.396337123,
+          -0.806377925
+        ]
+      }
+    },
+    {
+      "id": "sad",
+      "label": "Sad",
+      "group": "emotion",
+      "r2": 0.770657743,
+      "beta_source": {
+        "modality": 1.343905571,
+        "valence": 0.398461347,
+        "arousal": 0.654421747
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.738865178,
+          0.219069867
+        ],
+        "valence_arousal": [
+          0.400787501,
+          0.658242156
+        ],
+        "modality_arousal": [
+          0.692874691,
+          0.337398903
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.738865178,
+          -0.219069867
+        ],
+        "valence_arousal": [
+          -0.400787501,
+          -0.658242156
+        ],
+        "modality_arousal": [
+          0.692874691,
+          -0.337398903
+        ]
+      }
+    },
+    {
+      "id": "relief",
+      "label": "Relief",
+      "group": "emotion",
+      "r2": 0.857046692,
+      "beta_source": {
+        "modality": 0.10790795,
+        "valence": -1.002996972,
+        "arousal": 0.431941286
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.091676777,
+          -0.852129334
+        ],
+        "valence_arousal": [
+          -0.787156409,
+          0.33898941
+        ],
+        "modality_arousal": [
+          0.207724172,
+          0.831492454
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.091676777,
+          0.852129334
+        ],
+        "valence_arousal": [
+          0.787156409,
+          -0.33898941
+        ],
+        "modality_arousal": [
+          0.207724172,
+          -0.831492454
+        ]
+      }
+    },
+    {
+      "id": "bored",
+      "label": "Bored",
+      "group": "emotion",
+      "r2": 0.56489459,
+      "beta_source": {
+        "modality": 0.016885724,
+        "valence": 0.093756157,
+        "arousal": 0.443608122
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.100127998,
+          0.555949891
+        ],
+        "valence_arousal": [
+          0.116809588,
+          0.552685641
+        ],
+        "modality_arousal": [
+          0.021486873,
+          0.564485794
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.100127998,
+          -0.555949891
+        ],
+        "valence_arousal": [
+          -0.116809588,
+          -0.552685641
+        ],
+        "modality_arousal": [
+          0.021486873,
+          -0.564485794
+        ]
+      }
+    },
+    {
+      "id": "liking",
+      "label": "Liking",
+      "group": "evaluation",
+      "r2": 0.972271831,
+      "beta_source": {
+        "modality": 0.251029513,
+        "valence": -1.032765505,
+        "arousal": 0.384075578
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          0.229639304,
+          -0.944763623
+        ],
+        "valence_arousal": [
+          -0.911294742,
+          0.338901767
+        ],
+        "modality_arousal": [
+          0.531931403,
+          0.813855943
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          0.229639304,
+          0.944763623
+        ],
+        "valence_arousal": [
+          0.911294742,
+          -0.338901767
+        ],
+        "modality_arousal": [
+          0.531931403,
+          -0.813855943
+        ]
+      }
+    },
+    {
+      "id": "familiarity",
+      "label": "Familiarity",
+      "group": "evaluation",
+      "r2": 0.718832488,
+      "beta_source": {
+        "modality": -0.401576658,
+        "valence": -0.888017472,
+        "arousal": 0.411820036
+      },
+      "endpoints_source": {
+        "modality_valence": [
+          -0.296190548,
+          -0.654974278
+        ],
+        "valence_arousal": [
+          -0.652120343,
+          0.302422229
+        ],
+        "modality_arousal": [
+          -0.50185045,
+          0.514651602
+        ]
+      },
+      "endpoints_display": {
+        "modality_valence": [
+          -0.296190548,
+          0.654974278
+        ],
+        "valence_arousal": [
+          0.652120343,
+          -0.302422229
+        ],
+        "modality_arousal": [
+          -0.50185045,
+          -0.514651602
+        ]
+      }
+    }
+  ],
+  "unresolved_metadata": {
+    "music_point_to_title_mapping": "The code identifies music points only as S1/S2, B1/B2, SO1/SO2, SA1/SA2. The paper lists two titles per category but the supplied files do not explicitly prove which title is exemplar 1 vs exemplar 2. Use internal labels until this is confirmed from the original spreadsheet/protocol."
+  }
+}
