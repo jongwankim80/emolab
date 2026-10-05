@@ -2,39 +2,69 @@
   "use strict";
 
   const DATA_URL = "atlas-data.json";
-  const plot = document.getElementById("mds-plot");
+  const plot2d = document.getElementById("mds-plot");
+  const plot3d = document.getElementById("mds-plot-3d");
   const layer = document.getElementById("atlas-points-layer");
   const vectorLayer = document.getElementById("atlas-vectors-layer");
   const tooltip = document.getElementById("atlas-tooltip");
   const selectedItem = document.getElementById("atlas-selected-item");
+  const plotTitle = document.getElementById("atlas-plot-title");
+  const viewBadge = document.getElementById("atlas-view-badge");
+  const axisX = document.getElementById("atlas-axis-x");
+  const axisY = document.getElementById("atlas-axis-y");
+  const vector3dNote = document.getElementById("atlas-vector-3d-note");
+
+  const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
   const modalityButtons = Array.from(document.querySelectorAll("[data-modality]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-category]"));
   const vectorButtons = Array.from(document.querySelectorAll("[data-vectors]"));
 
-  if (!plot || !layer || !vectorLayer) return;
+  if (!plot2d || !plot3d || !layer || !vectorLayer) return;
 
-  const categoryClass = {
-    sweet: "sweet",
-    bitter: "bitter",
-    sour: "sour",
-    salty: "salty"
+  const COLORS = {
+    sweet: "#c48a3a",
+    bitter: "#8b4f5b",
+    sour: "#668c5e",
+    salty: "#4f7895"
   };
 
-  // A deliberately compact subset for the default display.
-  // These are published vector-fitting results, not a new statistical selection.
   const KEY_VECTOR_IDS = new Set([
     "sweet", "bitter", "sour", "salty",
     "enjoyment", "anger", "liking", "bored"
   ]);
 
-  const bounds = {
-    xMin: -2.05,
-    xMax: 2.05,
-    yMin: -1.75,
-    yMax: 1.75
+  const VIEWS = {
+    "valence-arousal": {
+      title: "Valence × Arousal",
+      x: "valence",
+      y: "arousal",
+      xLabel: "Valence",
+      yLabel: "Arousal",
+      endpoint: "valence_arousal",
+      bounds: { xMin: -2.05, xMax: 2.05, yMin: -1.75, yMax: 1.75 }
+    },
+    "modality-valence": {
+      title: "Modality × Valence",
+      x: "modality",
+      y: "valence",
+      xLabel: "Modality",
+      yLabel: "Valence",
+      endpoint: "modality_valence",
+      bounds: { xMin: -1.4, xMax: 1.4, yMin: -2.05, yMax: 2.05 }
+    },
+    "modality-arousal": {
+      title: "Modality × Arousal",
+      x: "modality",
+      y: "arousal",
+      xLabel: "Modality",
+      yLabel: "Arousal",
+      endpoint: "modality_arousal",
+      bounds: { xMin: -1.4, xMax: 1.4, yMin: -1.75, yMax: 1.75 }
+    }
   };
 
   const state = {
+    view: "valence-arousal",
     modality: "both",
     category: null,
     vectors: "key"
@@ -43,12 +73,18 @@
   let stimuli = [];
   let vectors = [];
 
+  function currentView() {
+    return VIEWS[state.view] || VIEWS["valence-arousal"];
+  }
+
   function scaleX(x) {
-    return ((x - bounds.xMin) / (bounds.xMax - bounds.xMin)) * 88 + 6;
+    const b = currentView().bounds;
+    return ((x - b.xMin) / (b.xMax - b.xMin)) * 88 + 6;
   }
 
   function scaleY(y) {
-    return (1 - (y - bounds.yMin) / (bounds.yMax - bounds.yMin)) * 88 + 6;
+    const b = currentView().bounds;
+    return (1 - (y - b.yMin) / (b.yMax - b.yMin)) * 88 + 6;
   }
 
   function titleCase(value) {
@@ -64,22 +100,33 @@
       .replaceAll("'", "&#039;");
   }
 
+  function coordText(stimulus) {
+    if (state.view === "3d") {
+      const c = stimulus.display_coordinates;
+      return `Modality ${c.modality.toFixed(2)} · Valence ${c.valence.toFixed(2)} · Arousal ${c.arousal.toFixed(2)}`;
+    }
+
+    const cfg = currentView();
+    const c = stimulus.display_coordinates;
+    return `${cfg.xLabel} ${c[cfg.x].toFixed(2)} · ${cfg.yLabel} ${c[cfg.y].toFixed(2)}`;
+  }
+
   function updateSelectedStimulus(stimulus) {
     if (!selectedItem) return;
-    const c = stimulus.display_coordinates;
     selectedItem.innerHTML = `
       <div class="selected-name">${escapeHtml(stimulus.display_name)}</div>
       <div class="selected-meta">
         <span class="selected-tag">${titleCase(stimulus.modality)}</span>
         <span class="selected-tag">${titleCase(stimulus.category)}</span>
       </div>
-      <div class="selected-coords">Valence ${c.valence.toFixed(2)} · Arousal ${c.arousal.toFixed(2)}</div>
+      <div class="selected-coords">${coordText(stimulus)}</div>
     `;
   }
 
   function updateSelectedVector(vector) {
-    if (!selectedItem) return;
-    const endpoint = vector.endpoints_display.valence_arousal;
+    if (!selectedItem || state.view === "3d") return;
+    const cfg = currentView();
+    const endpoint = vector.endpoints_display[cfg.endpoint];
     selectedItem.innerHTML = `
       <div class="selected-name">${escapeHtml(vector.label)}</div>
       <div class="selected-meta">
@@ -97,8 +144,8 @@
   }
 
   function positionTooltipAt(x, y, title, meta) {
-    if (!tooltip) return;
-    const plotRect = plot.getBoundingClientRect();
+    if (!tooltip || state.view === "3d") return;
+    const plotRect = plot2d.getBoundingClientRect();
     tooltip.innerHTML = `<strong>${escapeHtml(title)}</strong><span>${escapeHtml(meta)}</span>`;
     tooltip.hidden = false;
 
@@ -116,7 +163,7 @@
   }
 
   function positionTooltipForPoint(point, stimulus) {
-    const plotRect = plot.getBoundingClientRect();
+    const plotRect = plot2d.getBoundingClientRect();
     const pointRect = point.getBoundingClientRect();
     positionTooltipAt(
       pointRect.left - plotRect.left + pointRect.width,
@@ -127,8 +174,10 @@
   }
 
   function positionTooltipForVector(vector) {
-    const endpoint = vector.endpoints_display.valence_arousal;
-    const plotRect = plot.getBoundingClientRect();
+    if (state.view === "3d") return;
+    const cfg = currentView();
+    const endpoint = vector.endpoints_display[cfg.endpoint];
+    const plotRect = plot2d.getBoundingClientRect();
     const x = (scaleX(endpoint[0]) / 100) * plotRect.width;
     const y = (scaleY(endpoint[1]) / 100) * plotRect.height;
     positionTooltipAt(
@@ -145,6 +194,20 @@
 
   function pointMatchesModality(point) {
     return state.modality === "both" || point.dataset.modality === state.modality;
+  }
+
+  function position2DPoints() {
+    if (state.view === "3d") return;
+    const cfg = currentView();
+    const byId = new Map(stimuli.map((s) => [s.id, s]));
+
+    layer.querySelectorAll(".atlas-point").forEach((point) => {
+      const stimulus = byId.get(point.dataset.id);
+      if (!stimulus) return;
+      const c = stimulus.display_coordinates;
+      point.style.left = `${scaleX(c[cfg.x])}%`;
+      point.style.top = `${scaleY(c[cfg.y])}%`;
+    });
   }
 
   function applyPointFilters() {
@@ -179,8 +242,11 @@
   }
 
   function renderVectors() {
-    const NS = "http://www.w3.org/2000/svg";
     vectorLayer.replaceChildren();
+    if (state.view === "3d" || state.vectors === "off") return;
+
+    const NS = "http://www.w3.org/2000/svg";
+    const cfg = currentView();
 
     const defs = document.createElementNS(NS, "defs");
     const marker = document.createElementNS(NS, "marker");
@@ -199,17 +265,19 @@
     defs.appendChild(marker);
     vectorLayer.appendChild(defs);
 
-    if (state.vectors === "off") return;
-
     const origin = document.createElementNS(NS, "circle");
-    origin.setAttribute("cx", "50");
-    origin.setAttribute("cy", "50");
+    origin.setAttribute("cx", String(scaleX(0)));
+    origin.setAttribute("cy", String(scaleY(0)));
     origin.setAttribute("r", "0.45");
     origin.setAttribute("class", "atlas-vector-origin");
     vectorLayer.appendChild(origin);
 
     vectors.filter(vectorShouldShow).forEach((vector) => {
-      const endpoint = vector.endpoints_display.valence_arousal;
+      const endpoint = vector.endpoints_display[cfg.endpoint];
+      if (!endpoint) return;
+
+      const x1 = scaleX(0);
+      const y1 = scaleY(0);
       const x2 = scaleX(endpoint[0]);
       const y2 = scaleY(endpoint[1]);
 
@@ -218,23 +286,23 @@
       group.setAttribute("tabindex", "0");
 
       const hit = document.createElementNS(NS, "line");
-      hit.setAttribute("x1", "50");
-      hit.setAttribute("y1", "50");
+      hit.setAttribute("x1", String(x1));
+      hit.setAttribute("y1", String(y1));
       hit.setAttribute("x2", String(x2));
       hit.setAttribute("y2", String(y2));
       hit.setAttribute("class", "atlas-vector-hit");
 
       const line = document.createElementNS(NS, "line");
-      line.setAttribute("x1", "50");
-      line.setAttribute("y1", "50");
+      line.setAttribute("x1", String(x1));
+      line.setAttribute("y1", String(y1));
       line.setAttribute("x2", String(x2));
       line.setAttribute("y2", String(y2));
       line.setAttribute("class", "atlas-vector-line");
       line.setAttribute("marker-end", "url(#atlas-arrow)");
 
       const label = document.createElementNS(NS, "text");
-      const dx = x2 >= 50 ? 1.3 : -1.3;
-      const anchor = x2 >= 50 ? "start" : "end";
+      const dx = x2 >= x1 ? 1.3 : -1.3;
+      const anchor = x2 >= x1 ? "start" : "end";
       label.setAttribute("x", String(x2 + dx));
       label.setAttribute("y", String(y2 - 0.8));
       label.setAttribute("text-anchor", anchor);
@@ -263,9 +331,127 @@
     });
   }
 
-  function applyFilters() {
+  function render3D() {
+    if (state.view !== "3d") return;
+
+    if (!window.Plotly) {
+      plot3d.innerHTML = '<div class="atlas-3d-error">The 3D viewer could not be loaded. The three 2D projections remain available.</div>';
+      return;
+    }
+
+    const filtered = stimuli.filter((s) => state.modality === "both" || s.modality === state.modality);
+    const traces = [];
+
+    ["taste", "music"].forEach((modality) => {
+      ["sweet", "bitter", "sour", "salty"].forEach((category) => {
+        const items = filtered.filter((s) => s.modality === modality && s.category === category);
+        if (!items.length) return;
+
+        traces.push({
+          type: "scatter3d",
+          mode: "markers",
+          name: `${titleCase(modality)} · ${titleCase(category)}`,
+          x: items.map((s) => s.display_coordinates.modality),
+          y: items.map((s) => s.display_coordinates.valence),
+          z: items.map((s) => s.display_coordinates.arousal),
+          text: items.map((s) => s.display_name),
+          customdata: items.map((s) => [s.id, s.modality, s.category]),
+          hovertemplate: "<b>%{text}</b><br>%{customdata[1]} · %{customdata[2]}<extra></extra>",
+          marker: {
+            size: 7,
+            color: COLORS[category],
+            symbol: modality === "taste" ? "circle" : "diamond",
+            opacity: !state.category || state.category === category ? 0.95 : 0.13,
+            line: { color: "#ffffff", width: 1 }
+          },
+          showlegend: false
+        });
+      });
+    });
+
+    const layout = {
+      margin: { l: 0, r: 0, t: 0, b: 0 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      scene: {
+        bgcolor: "#fcfdfc",
+        aspectmode: "cube",
+        xaxis: { title: "Modality", range: [-1.4, 1.4], zeroline: true, gridcolor: "#e8ecea" },
+        yaxis: { title: "Valence", range: [-2.05, 2.05], zeroline: true, gridcolor: "#e8ecea" },
+        zaxis: { title: "Arousal", range: [-1.75, 1.75], zeroline: true, gridcolor: "#e8ecea" },
+        camera: { eye: { x: 1.35, y: 1.35, z: 1.05 } }
+      },
+      hoverlabel: {
+        bgcolor: "#ffffff",
+        bordercolor: "#dfe5e2",
+        font: { color: "#18212b", size: 12 }
+      }
+    };
+
+    const config = {
+      responsive: true,
+      displaylogo: false,
+      scrollZoom: false
+    };
+
+    window.Plotly.react(plot3d, traces, layout, config).then(() => {
+      if (typeof plot3d.removeAllListeners === "function") {
+        plot3d.removeAllListeners("plotly_hover");
+        plot3d.removeAllListeners("plotly_unhover");
+      }
+      plot3d.on("plotly_hover", (event) => {
+        const id = event?.points?.[0]?.customdata?.[0];
+        const stimulus = stimuli.find((s) => s.id === id);
+        if (stimulus) updateSelectedStimulus(stimulus);
+      });
+      plot3d.on("plotly_unhover", resetSelected);
+    });
+  }
+
+  function updateViewUI() {
+    const is3d = state.view === "3d";
+
+    viewButtons.forEach((button) => {
+      const active = button.dataset.view === state.view;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+
+    vectorButtons.forEach((button) => {
+      button.disabled = is3d;
+      button.title = is3d ? "Vector overlays are available in the 2D projections." : "";
+    });
+
+    if (vector3dNote) vector3dNote.hidden = !is3d;
+
+    plot2d.hidden = is3d;
+    plot3d.hidden = !is3d;
+
+    if (is3d) {
+      if (plotTitle) plotTitle.textContent = "Modality × Valence × Arousal";
+      if (viewBadge) viewBadge.textContent = "3D";
+      render3D();
+      return;
+    }
+
+    const cfg = currentView();
+    if (plotTitle) plotTitle.textContent = cfg.title;
+    if (viewBadge) viewBadge.textContent = "2D";
+    if (axisX) axisX.textContent = cfg.xLabel;
+    if (axisY) axisY.textContent = cfg.yLabel;
+    plot2d.setAttribute("aria-label", `${cfg.xLabel} by ${cfg.yLabel} multidimensional scaling plot of 16 taste and music stimuli`);
+    position2DPoints();
     applyPointFilters();
     renderVectors();
+  }
+
+  function applyFilters() {
+    if (state.view === "3d") {
+      render3D();
+    } else {
+      applyPointFilters();
+      renderVectors();
+    }
 
     vectorButtons.forEach((button) => {
       const active = button.dataset.vectors === state.vectors;
@@ -279,14 +465,10 @@
 
   function makePoint(stimulus) {
     const point = document.createElement("button");
-    const category = categoryClass[stimulus.category] || "unknown";
     const modality = stimulus.modality === "music" ? "music" : "taste";
-    const c = stimulus.display_coordinates;
 
     point.type = "button";
-    point.className = `atlas-point ${category} ${modality}`;
-    point.style.left = `${scaleX(c.valence)}%`;
-    point.style.top = `${scaleY(c.arousal)}%`;
+    point.className = `atlas-point ${stimulus.category} ${modality}`;
     point.dataset.id = stimulus.id;
     point.dataset.name = stimulus.display_name;
     point.dataset.modality = stimulus.modality;
@@ -316,6 +498,15 @@
     return point;
   }
 
+  viewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      state.view = button.dataset.view;
+      hideTooltip();
+      resetSelected();
+      updateViewUI();
+    });
+  });
+
   modalityButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.modality = button.dataset.modality;
@@ -333,6 +524,7 @@
 
   vectorButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      if (button.disabled) return;
       state.vectors = button.dataset.vectors;
       applyFilters();
     });
@@ -347,14 +539,16 @@
 
   fetch(DATA_URL)
     .then((response) => {
-      if (!response.ok) throw new Error(`Failed to load ${DATA_URL}`);
+      if (!response.ok) throw new Error(`Failed to load ${DATA_URL}: ${response.status}`);
       return response.json();
     })
     .then((data) => {
       stimuli = data.stimuli;
       vectors = data.vectors;
       layer.replaceChildren(...stimuli.map(makePoint));
-      plot.classList.add("atlas-data-loaded");
+      plot2d.classList.add("atlas-data-loaded");
+      position2DPoints();
+      updateViewUI();
       applyFilters();
     })
     .catch((error) => {
