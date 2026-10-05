@@ -729,3 +729,95 @@
   font-size: 0.7rem;
   line-height: 1.45;
 }
+
+
+/* Phase 5: explicit grid placement, view controls, and 3D panel */
+.atlas-controls {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.atlas-plot-card {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.atlas-info {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.atlas-control:not(:disabled) {
+  cursor: pointer;
+}
+
+.atlas-control:not(:disabled):hover,
+.atlas-control:not(:disabled):focus-visible {
+  color: var(--atlas-accent-dark);
+  border-color: rgba(36, 95, 85, 0.38);
+  background: var(--atlas-soft);
+}
+
+.atlas-control:focus-visible {
+  outline: 2px solid rgba(36,95,85,0.35);
+  outline-offset: 2px;
+}
+
+.atlas-control-note {
+  margin: 0.6rem 0 0;
+  color: var(--atlas-muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.atlas-plot-placeholder[hidden],
+.atlas-plot-3d[hidden] {
+  display: none !important;
+}
+
+.atlas-plot-3d {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--atlas-border);
+  border-radius: 16px;
+  background: #fcfdfc;
+}
+
+.atlas-3d-error {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  color: var(--atlas-muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .atlas-controls {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .atlas-plot-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .atlas-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .atlas-controls,
+  .atlas-plot-card,
+  .atlas-info {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
