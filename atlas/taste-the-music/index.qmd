@@ -22,7 +22,7 @@ toc: false
 
 <section class="atlas-workspace" aria-label="Interactive MDS explorer">
 
-  <aside class="atlas-panel atlas-controls" aria-label="Atlas controls">
+  <div class="atlas-panel atlas-controls" role="complementary" aria-label="Atlas controls">
     <div class="atlas-panel-heading">
       <span class="atlas-kicker">Explore</span>
       <h2>View controls</h2>
@@ -31,10 +31,10 @@ toc: false
     <div class="atlas-control-group">
       <h3>View</h3>
       <div class="atlas-control-stack">
-        <button class="atlas-control active" type="button" disabled>Valence × Arousal</button>
-        <button class="atlas-control" type="button" disabled>Modality × Valence</button>
-        <button class="atlas-control" type="button" disabled>Modality × Arousal</button>
-        <button class="atlas-control" type="button" disabled>Explore 3D</button>
+        <button class="atlas-control active" type="button" data-view="valence-arousal" aria-pressed="true">Valence × Arousal</button>
+        <button class="atlas-control" type="button" data-view="modality-valence" aria-pressed="false">Modality × Valence</button>
+        <button class="atlas-control" type="button" data-view="modality-arousal" aria-pressed="false">Modality × Arousal</button>
+        <button class="atlas-control" type="button" data-view="3d" aria-pressed="false">Explore 3D</button>
       </div>
     </div>
 
@@ -54,6 +54,7 @@ toc: false
         <button class="atlas-chip active" type="button" data-vectors="key" aria-pressed="true">Key</button>
         <button class="atlas-chip" type="button" data-vectors="all" aria-pressed="false">All</button>
       </div>
+      <p id="atlas-vector-3d-note" class="atlas-control-note" hidden>Vector overlays are shown in the 2D projections.</p>
     </div>
 
     <div class="atlas-control-group">
@@ -65,25 +66,28 @@ toc: false
         <button class="atlas-category salty" type="button" data-category="salty" aria-pressed="false"><span></span>Salty</button>
       </div>
     </div>
-  </aside>
+  </div>
 
   <section class="atlas-plot-card" aria-label="Multidimensional scaling plot">
     <div class="atlas-plot-toolbar">
       <div>
         <span class="atlas-kicker">Affective space</span>
-        <h2>Valence × Arousal</h2>
+        <h2 id="atlas-plot-title">Valence × Arousal</h2>
       </div>
-      <div class="atlas-view-badge">2D</div>
+      <div id="atlas-view-badge" class="atlas-view-badge">2D</div>
     </div>
 
     <div id="mds-plot" class="atlas-plot-placeholder" role="img" aria-label="Valence by arousal multidimensional scaling plot of 16 taste and music stimuli">
       <div class="atlas-zero-line atlas-zero-line-x"></div>
       <div class="atlas-zero-line atlas-zero-line-y"></div>
-      <div class="atlas-axis-label atlas-axis-x">Valence</div>
-      <div class="atlas-axis-label atlas-axis-y">Arousal</div>
-      <svg id="atlas-vectors-layer" class="atlas-vectors-layer" viewBox="0 0 100 100" aria-hidden="true"></svg>\n      <div id="atlas-points-layer" class="atlas-points-layer"></div>
+      <div id="atlas-axis-x" class="atlas-axis-label atlas-axis-x">Valence</div>
+      <div id="atlas-axis-y" class="atlas-axis-label atlas-axis-y">Arousal</div>
+      <svg id="atlas-vectors-layer" class="atlas-vectors-layer" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <div id="atlas-points-layer" class="atlas-points-layer"></div>
       <div id="atlas-tooltip" class="atlas-tooltip" role="tooltip" hidden></div>
     </div>
+
+    <div id="mds-plot-3d" class="atlas-plot-3d" role="img" aria-label="Three-dimensional MDS plot with modality, valence, and arousal axes" hidden></div>
 
     <div class="atlas-plot-caption">
       <span>Shape = modality</span>
@@ -92,7 +96,7 @@ toc: false
     </div>
   </section>
 
-  <aside class="atlas-panel atlas-info" aria-label="Atlas information">
+  <div class="atlas-panel atlas-info" role="complementary" aria-label="Atlas information">
     <div class="atlas-panel-heading">
       <span class="atlas-kicker">Guide</span>
       <h2>Read the space</h2>
@@ -101,7 +105,7 @@ toc: false
     <section class="atlas-info-block">
       <h3>Selected item</h3>
       <div id="atlas-selected-item" class="atlas-selected-item" aria-live="polite">
-        <p class="atlas-muted">Hover over a stimulus to see its details here.</p>
+        <p class="atlas-muted">Hover over a stimulus or vector to see its details here.</p>
       </div>
     </section>
 
@@ -126,7 +130,7 @@ toc: false
       <div class="atlas-legend-row"><span class="legend-shape circle"></span><span>Taste</span></div>
       <div class="atlas-legend-row"><span class="legend-shape triangle"></span><span>Music</span></div>
     </section>
-  </aside>
+  </div>
 
 </section>
 
@@ -164,5 +168,6 @@ toc: false
 
 </div>
 
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script src="atlas.js"></script>
 ```
