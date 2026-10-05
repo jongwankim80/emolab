@@ -645,3 +645,85 @@
   outline: 2px solid rgba(36,95,85,0.35);
   outline-offset: 2px;
 }
+
+
+.atlas-vectors-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.atlas-vector {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 160ms ease;
+}
+
+.atlas-vector-line {
+  stroke: rgba(24, 33, 43, 0.42);
+  stroke-width: 0.36;
+  vector-effect: non-scaling-stroke;
+}
+
+.atlas-vector-arrowhead {
+  fill: rgba(24, 33, 43, 0.52);
+}
+
+.atlas-vector-hit {
+  stroke: transparent;
+  stroke-width: 2.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.atlas-vector-label {
+  fill: #4f5965;
+  font-size: 2.1px;
+  font-weight: 650;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.94);
+  stroke-width: 0.55px;
+  stroke-linejoin: round;
+}
+
+.atlas-vector.taste .atlas-vector-line {
+  stroke: rgba(36, 95, 85, 0.56);
+}
+
+.atlas-vector.taste .atlas-vector-arrowhead {
+  fill: rgba(36, 95, 85, 0.68);
+}
+
+.atlas-vector.evaluation .atlas-vector-line {
+  stroke: rgba(24, 33, 43, 0.58);
+  stroke-dasharray: 1.25 0.8;
+}
+
+.atlas-vector:hover .atlas-vector-line,
+.atlas-vector:focus .atlas-vector-line {
+  stroke-width: 0.7;
+}
+
+.atlas-vector:hover .atlas-vector-label,
+.atlas-vector:focus .atlas-vector-label {
+  fill: var(--atlas-ink);
+  font-weight: 800;
+}
+
+.atlas-vector.is-vector-dimmed {
+  opacity: 0.12;
+}
+
+.atlas-vector-origin {
+  fill: rgba(24, 33, 43, 0.5);
+}
+
+.atlas-vector-note {
+  margin-top: 0.45rem;
+  color: var(--atlas-muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
