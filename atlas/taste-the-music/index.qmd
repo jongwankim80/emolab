@@ -75,15 +75,12 @@ toc: false
       <div class="atlas-view-badge">2D</div>
     </div>
 
-    <div id="mds-plot" class="atlas-plot-placeholder" role="img" aria-label="Square plotting area reserved for the interactive MDS visualization">
+    <div id="mds-plot" class="atlas-plot-placeholder" role="img" aria-label="Valence by arousal multidimensional scaling plot of 16 taste and music stimuli">
       <div class="atlas-zero-line atlas-zero-line-x"></div>
       <div class="atlas-zero-line atlas-zero-line-y"></div>
       <div class="atlas-axis-label atlas-axis-x">Valence</div>
       <div class="atlas-axis-label atlas-axis-y">Arousal</div>
-      <div class="atlas-placeholder-message">
-        <strong>Interactive MDS space</strong>
-        <span>Stimulus coordinates will be added in Phase 2.</span>
-      </div>
+      <div id="atlas-points-layer" class="atlas-points-layer" aria-hidden="true"></div>
     </div>
 
     <div class="atlas-plot-caption">
