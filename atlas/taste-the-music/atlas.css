@@ -912,47 +912,47 @@
 
 /* Increase 2D modality icons while keeping mobile markers smaller than desktop. */
 .atlas-point {
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.95rem;
+  height: 1.95rem;
 }
 
 .atlas-point:hover,
 .atlas-point:focus-visible {
-  width: 1.85rem;
-  height: 1.85rem;
+  width: 2.20rem;
+  height: 2.20rem;
 }
 
 .atlas-point.is-highlighted {
-  width: 1.70rem;
-  height: 1.70rem;
+  width: 2.08rem;
+  height: 2.08rem;
 }
 
 .legend-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  flex-basis: 1.2rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-basis: 1.35rem;
 }
 
 @media (max-width: 760px) {
   .atlas-point {
-    width: 0.95rem;
-    height: 0.95rem;
+    width: 1.05rem;
+    height: 1.05rem;
   }
 
   .atlas-point:hover,
   .atlas-point:focus-visible {
-    width: 1.12rem;
-    height: 1.12rem;
+    width: 1.20rem;
+    height: 1.20rem;
   }
 
   .atlas-point.is-highlighted {
-    width: 1.04rem;
-    height: 1.04rem;
+    width: 1.14rem;
+    height: 1.14rem;
   }
 
   .legend-icon {
-    width: 1.05rem;
-    height: 1.05rem;
-    flex-basis: 1.05rem;
+    width: 1.10rem;
+    height: 1.10rem;
+    flex-basis: 1.10rem;
   }
 }
