@@ -412,7 +412,7 @@
           z: [0, endpoint[2]],
           text: ["", vector.label],
           textposition: "top center",
-          line: { color, width: vector.group === "evaluation" ? 3 : 2.5 },
+          line: { color, width: vector.group === "evaluation" ? 3 : 2.5, dash: "dash" },
           textfont: { color, size: 10 },
           meta: { kind: "vector", id: vector.id },
           hovertemplate: "<b>%{text}</b><br>Fitted vector<extra></extra>",
@@ -438,6 +438,47 @@
       });
     }
 
+    const hoverGuideTraceIndex = traces.length;
+    traces.push({
+      type: "scatter3d",
+      mode: "lines",
+      x: [null],
+      y: [null],
+      z: [null],
+      line: { color: "#c83d3d", width: 4, dash: "dot" },
+      hoverinfo: "skip",
+      showlegend: false,
+      meta: { kind: "hover-guides" }
+    });
+
+    const clearHoverGuides = () => {
+      window.Plotly.restyle(
+        plot3d,
+        { x: [[null]], y: [[null]], z: [[null]] },
+        [hoverGuideTraceIndex]
+      );
+    };
+
+    const showHoverGuides = (point) => {
+      const x = point?.x;
+      const y = point?.y;
+      const z = point?.z;
+      if (![x, y, z].every(Number.isFinite)) {
+        clearHoverGuides();
+        return;
+      }
+
+      window.Plotly.restyle(
+        plot3d,
+        {
+          x: [[x, 0, null, x, x, null, x, x]],
+          y: [[y, y, null, y, 0, null, y, y]],
+          z: [[z, z, null, z, z, null, z, 0]]
+        },
+        [hoverGuideTraceIndex]
+      );
+    };
+
     const layout = {
       margin: { l: 0, r: 0, t: 0, b: 0 },
       paper_bgcolor: "rgba(0,0,0,0)",
@@ -445,9 +486,9 @@
       scene: {
         bgcolor: "#fcfdfc",
         aspectmode: "cube",
-        xaxis: { title: "Modality", range: [-1.4, 1.4], zeroline: true, gridcolor: "#e8ecea" },
-        yaxis: { title: "Valence", range: [-2.05, 2.05], zeroline: true, gridcolor: "#e8ecea" },
-        zaxis: { title: "Arousal", range: [-1.75, 1.75], zeroline: true, gridcolor: "#e8ecea" },
+        xaxis: { title: "Modality", range: [-1.4, 1.4], zeroline: true, gridcolor: "#e8ecea", showspikes: false },
+        yaxis: { title: "Valence", range: [-2.05, 2.05], zeroline: true, gridcolor: "#e8ecea", showspikes: false },
+        zaxis: { title: "Arousal", range: [-1.75, 1.75], zeroline: true, gridcolor: "#e8ecea", showspikes: false },
         camera: { eye: { x: 1.35, y: 1.35, z: 1.05 } }
       },
       hoverlabel: {
@@ -473,16 +514,27 @@
         const meta = point?.data?.meta;
 
         if (meta?.kind === "vector") {
+          clearHoverGuides();
           const vector = vectors.find((v) => v.id === meta.id);
           if (vector) updateSelectedVector(vector);
           return;
         }
 
+        if (meta?.kind === "hover-guides") return;
+
         const id = point?.customdata?.[0];
         const stimulus = stimuli.find((s) => s.id === id);
-        if (stimulus) updateSelectedStimulus(stimulus);
+        if (stimulus) {
+          showHoverGuides(point);
+          updateSelectedStimulus(stimulus);
+        } else {
+          clearHoverGuides();
+        }
       });
-      plot3d.on("plotly_unhover", resetSelected);
+      plot3d.on("plotly_unhover", () => {
+        clearHoverGuides();
+        resetSelected();
+      });
     });
   }
 

@@ -668,6 +668,7 @@
 .atlas-vector-line {
   stroke: rgba(24, 33, 43, 0.42);
   stroke-width: 0.36;
+  stroke-dasharray: 1.6 1.1;
   vector-effect: non-scaling-stroke;
 }
 
@@ -701,7 +702,7 @@
 
 .atlas-vector.evaluation .atlas-vector-line {
   stroke: rgba(24, 33, 43, 0.58);
-  stroke-dasharray: 1.25 0.8;
+  stroke-dasharray: 2.2 1.2;
 }
 
 .atlas-vector:hover .atlas-vector-line,
