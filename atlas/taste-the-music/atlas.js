@@ -18,6 +18,8 @@
   const modalityButtons = Array.from(document.querySelectorAll("[data-modality]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-category]"));
   const vectorButtons = Array.from(document.querySelectorAll("[data-vectors]"));
+  const legendIcons2d = Array.from(document.querySelectorAll(".legend-icon-2d"));
+  const legendShapes3d = Array.from(document.querySelectorAll(".legend-shape-3d"));
 
   if (!plot2d || !plot3d || !layer || !vectorLayer) return;
 
@@ -85,6 +87,24 @@
   function scaleY(y) {
     const b = currentView().bounds;
     return (1 - (y - b.yMin) / (b.yMax - b.yMin)) * 88 + 6;
+  }
+
+  function modalityIconMarkup(modality) {
+    if (modality === "music") {
+      return `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M14.2 4.2v9.9a3.8 3.8 0 0 0-2.5-.4c-2 .3-3.4 1.6-3.2 3.1.2 1.5 1.9 2.4 3.9 2.1 1.8-.3 3.1-1.4 3.1-2.9V8.1l4-1.1V4.2l-5.3 1.5V4.2Z"></path>
+        </svg>
+      `;
+    }
+
+    return `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path class="tongue-mouth" d="M4.5 9.2C6.7 6.7 9.2 5.5 12 5.5s5.3 1.2 7.5 3.7c-2.2 2.2-4.7 3.3-7.5 3.3s-5.3-1.1-7.5-3.3Z"></path>
+        <path d="M8.3 10.8v3c0 3.6 1.6 5.7 3.7 5.7s3.7-2.1 3.7-5.7v-3c-1.1.7-2.3 1-3.7 1s-2.6-.3-3.7-1Z"></path>
+        <path class="tongue-line" d="M12 12.4v6.1"></path>
+      </svg>
+    `;
   }
 
   function titleCase(value) {
@@ -503,6 +523,9 @@
 
     if (vector3dNote) vector3dNote.hidden = !is3d;
 
+    legendIcons2d.forEach((marker) => { marker.hidden = is3d; });
+    legendShapes3d.forEach((marker) => { marker.hidden = !is3d; });
+
     plot2d.hidden = is3d;
     plot3d.hidden = !is3d;
 
@@ -548,6 +571,7 @@
 
     point.type = "button";
     point.className = `atlas-point ${stimulus.category} ${modality}`;
+    point.innerHTML = modalityIconMarkup(stimulus.modality);
     point.dataset.id = stimulus.id;
     point.dataset.name = stimulus.display_name;
     point.dataset.modality = stimulus.modality;
