@@ -13,6 +13,7 @@ with (DATA / "site-content.yml").open(encoding="utf-8") as f:
 research = site.get("research") or {}
 intro = research.get("intro") or {}
 atlas = research.get("atlas") or {}
+atlas_ai = research.get("atlas_ai") or {}
 
 icons = {
     1: "images/research/affect.png",
@@ -39,17 +40,18 @@ for i in range(1, 5):
     th = research.get(f"theme_{i}") or {}
     qlabel = th.get("questions_label") or "Questions we ask"
     atlas_block = ""
-    if i == 1 and atlas.get("url"):
+    active_atlas = atlas if i == 1 else atlas_ai if i == 4 else {}
+    if active_atlas.get("url"):
         atlas_block = f"""
 ::: {{.atlas-feature}}
 ::: {{.atlas-feature-kicker}}
-{txt(atlas.get('eyebrow'))}
+{txt(active_atlas.get('eyebrow'))}
 :::
-### {txt(atlas.get('title'))}
+### {txt(active_atlas.get('title'))}
 
-{txt(atlas.get('text'))}
+{txt(active_atlas.get('text'))}
 
-[{txt(atlas.get('link_text'))}]({txt(atlas.get('url'))}){{.atlas-feature-link}}
+[{txt(active_atlas.get('link_text'))}]({txt(active_atlas.get('url'))}){{.atlas-feature-link}}
 :::
 """
     parts.append(f''':::: {{.research-theme}}
