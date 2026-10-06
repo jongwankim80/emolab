@@ -44,12 +44,16 @@ def pub_meta(p):
     return f"<em>{journal}</em>{(', ' + detail) if detail else ''}"
 
 
-def pub_links(p):
+def pub_links(p, compact=False):
     links = []
     doi = str(p.get('doi') or '').strip()
     if doi:
         href = doi if doi.startswith('http') else f"https://doi.org/{doi}"
         links.append(f'<a href="{escape(href)}">DOI</a>')
+    if not compact:
+        atlas = str(p.get('atlas') or '').strip()
+        if atlas:
+            links.append(f'<a class="pub-atlas-link" href="{escape(atlas)}">Interactive Atlas</a>')
     for key, label in [('pdf','PDF'),('osf','OSF'),('code','Code')]:
         url = str(p.get(key) or '').strip()
         if url:
@@ -68,7 +72,7 @@ def publication_card(p, compact=False):
   <h3>{escape(str(p.get('title') or ''))}</h3>
   <div class="pub-authors">{author_html(str(p.get('authors') or ''))}</div>
   <div class="pub-meta">{pub_meta(p)}</div>
-  {pub_links(p)}
+  {pub_links(p, compact=compact)}
 </article>'''
 
 

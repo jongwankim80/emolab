@@ -253,3 +253,50 @@ main.content { max-width: var(--emolab-max); }
   .theme-icon { width: 64px !important; max-width: 64px !important; height: 64px !important; margin: 0; }
   .alumni-row { grid-template-columns: 1fr; gap: .35rem; }
 }
+
+
+/* Interactive research companion */
+.atlas-feature {
+  margin-top: 1.6rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid rgba(36,95,85,.16);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(243,247,245,.95), rgba(255,255,255,.98));
+}
+
+.atlas-feature-kicker {
+  color: var(--emolab-accent);
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  margin-bottom: .32rem;
+}
+
+.research-theme .atlas-feature h3 {
+  margin: .2rem 0 .38rem;
+  font-size: 1.18rem;
+  letter-spacing: -.015em;
+}
+
+.research-theme .atlas-feature p {
+  margin: 0 0 .72rem;
+  color: var(--emolab-muted);
+  font-size: .92rem;
+  line-height: 1.6;
+}
+
+.atlas-feature-link {
+  font-size: .9rem;
+  font-weight: 780;
+  text-decoration: none;
+}
+
+.atlas-feature-link:hover {
+  text-decoration: underline;
+}
+
+.pub-atlas-link {
+  color: var(--emolab-accent-dark);
+  font-weight: 800;
+}
