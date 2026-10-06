@@ -41,8 +41,12 @@
     category: null
   };
 
+  const VIEW_TRANSITION_MS = 720;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   let atlasData = null;
   let records = [];
+  let isTransitioning = false;
 
   function titleCase(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
@@ -118,13 +122,35 @@
     return !state.category || record.category === state.category;
   }
 
+  function sourceLabel(source) {
+    return source === "human" ? "Human" : "ChatGPT";
+  }
+
+  function applyPointSource(point, record, source, move = true) {
+    const coords = record[source];
+
+    point.classList.toggle("human", source === "human");
+    point.classList.toggle("gpt", source === "gpt");
+    point.dataset.source = source;
+
+    if (move) {
+      point.style.left = `${scaleX(coords.valence)}%`;
+      point.style.top = `${scaleY(coords.arousal)}%`;
+    }
+
+    point.setAttribute(
+      "aria-label",
+      `${record.displayName}, ${sourceLabel(source)}, ${titleCase(record.category)}, valence ${coords.valence.toFixed(2)}, arousal ${coords.arousal.toFixed(2)}`
+    );
+  }
+
   function updateSelected(record, source) {
     if (!selectedItem) return;
-    const sourceLabel = source === "human" ? "Human" : "ChatGPT";
+    const label = sourceLabel(source);
     selectedItem.innerHTML = `
       <div class="selected-name">${escapeHtml(record.displayName)}</div>
       <div class="selected-meta">
-        <span class="selected-tag">${sourceLabel}</span>
+        <span class="selected-tag">${label}</span>
         <span class="selected-tag">${titleCase(record.category)}</span>
       </div>
       <div class="selected-comparison">
@@ -151,11 +177,11 @@
     const rect = plot.getBoundingClientRect();
     const pointRect = point.getBoundingClientRect();
     const c = record[source];
-    const sourceLabel = source === "human" ? "Human" : "ChatGPT";
+    const label = sourceLabel(source);
 
     tooltip.innerHTML = `
       <strong>${escapeHtml(record.displayName)}</strong>
-      <span>${sourceLabel} · ${titleCase(record.category)} · V ${c.valence.toFixed(2)} · A ${c.arousal.toFixed(2)}</span>
+      <span>${label} · ${titleCase(record.category)} · V ${c.valence.toFixed(2)} · A ${c.arousal.toFixed(2)}</span>
     `;
     tooltip.hidden = false;
 
@@ -174,27 +200,21 @@
 
   function makePoint(record, source) {
     const point = document.createElement("button");
-    const coords = record[source];
 
     point.type = "button";
     point.className = `atlas-point ${source} ${record.category}`;
-    point.style.left = `${scaleX(coords.valence)}%`;
-    point.style.top = `${scaleY(coords.arousal)}%`;
     point.dataset.id = record.id;
-    point.dataset.source = source;
     point.dataset.category = record.category;
-    point.setAttribute(
-      "aria-label",
-      `${record.displayName}, ${source === "human" ? "Human" : "ChatGPT"}, ${titleCase(record.category)}, valence ${coords.valence.toFixed(2)}, arousal ${coords.arousal.toFixed(2)}`
-    );
+    applyPointSource(point, record, source);
 
     const categoryMatch = pointMatchesCategory(record);
     point.classList.toggle("is-dimmed", !categoryMatch);
     point.classList.toggle("is-highlighted", Boolean(state.category) && categoryMatch);
 
     point.addEventListener("mouseenter", () => {
-      updateSelected(record, source);
-      showTooltip(point, record, source);
+      const currentSource = point.dataset.source;
+      updateSelected(record, currentSource);
+      showTooltip(point, record, currentSource);
     });
 
     point.addEventListener("mouseleave", () => {
@@ -203,8 +223,9 @@
     });
 
     point.addEventListener("focus", () => {
-      updateSelected(record, source);
-      showTooltip(point, record, source);
+      const currentSource = point.dataset.source;
+      updateSelected(record, currentSource);
+      showTooltip(point, record, currentSource);
     });
 
     point.addEventListener("blur", () => {
@@ -248,11 +269,22 @@
     });
   }
 
+  function applyMeanSource(marker, source, coords, move = true) {
+    marker.classList.toggle("human", source === "human");
+    marker.classList.toggle("gpt", source === "gpt");
+    marker.dataset.source = source;
+
+    if (move) {
+      marker.style.left = `${scaleX(coords[0])}%`;
+      marker.style.top = `${scaleY(coords[1])}%`;
+    }
+  }
+
   function makeMeanMarker(category, source, coords) {
     const marker = document.createElement("div");
     marker.className = `atlas-mean-marker ${source} ${category}`;
-    marker.style.left = `${scaleX(coords[0])}%`;
-    marker.style.top = `${scaleY(coords[1])}%`;
+    marker.dataset.category = category;
+    applyMeanSource(marker, source, coords);
 
     const categoryMatch = !state.category || category === state.category;
     marker.classList.toggle("is-dimmed", !categoryMatch);
@@ -273,6 +305,83 @@
     });
 
     meansLayer.appendChild(frag);
+  }
+
+  function canAnimateSingleSourceTransition(nextView) {
+    return (
+      !prefersReducedMotion &&
+      !isTransitioning &&
+      (state.view === "human" || state.view === "gpt") &&
+      (nextView === "human" || nextView === "gpt") &&
+      nextView !== state.view
+    );
+  }
+
+  function transitionSingleSource(nextView) {
+    const previousView = state.view;
+
+    if (!canAnimateSingleSourceTransition(nextView)) {
+      state.view = nextView;
+      renderAll();
+      return;
+    }
+
+    const pointNodes = Array.from(pointsLayer.querySelectorAll(".atlas-point"));
+    const meanNodes = Array.from(meansLayer.querySelectorAll(".atlas-mean-marker"));
+
+    if (pointNodes.length !== records.length) {
+      state.view = nextView;
+      renderAll();
+      return;
+    }
+
+    isTransitioning = true;
+    plot.classList.add("is-transitioning");
+    hideTooltip();
+    resetSelected();
+
+    state.view = nextView;
+    updateControls();
+
+    // Keep the current DOM positions for one frame, then move every image
+    // to the coordinates of the corresponding rating source.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        pointNodes.forEach((point, index) => {
+          const record = records[index];
+          applyPointSource(point, record, nextView);
+        });
+
+        meanNodes.forEach((marker) => {
+          const category = marker.dataset.category;
+          const summary = atlasData?.category_means?.[category];
+          if (!summary) return;
+          applyMeanSource(marker, nextView, summary[nextView]);
+        });
+      });
+    });
+
+    window.setTimeout(() => {
+      isTransitioning = false;
+      plot.classList.remove("is-transitioning");
+
+      // Ensure the current state is exact even if the tab was backgrounded
+      // during the CSS transition.
+      pointNodes.forEach((point, index) => {
+        applyPointSource(point, records[index], nextView);
+      });
+
+      meanNodes.forEach((marker) => {
+        const category = marker.dataset.category;
+        const summary = atlasData?.category_means?.[category];
+        if (!summary) return;
+        applyMeanSource(marker, nextView, summary[nextView]);
+      });
+
+      if (previousView !== nextView) {
+        updateCategorySummary();
+      }
+    }, VIEW_TRANSITION_MS + 60);
   }
 
   function updateCategorySummary() {
@@ -340,13 +449,26 @@
 
   viewButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      state.view = button.dataset.view;
+      if (isTransitioning) return;
+
+      const nextView = button.dataset.view;
+
+      if (
+        (state.view === "human" || state.view === "gpt") &&
+        (nextView === "human" || nextView === "gpt")
+      ) {
+        transitionSingleSource(nextView);
+        return;
+      }
+
+      state.view = nextView;
       renderAll();
     });
   });
 
   meanButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      if (isTransitioning) return;
       state.means = button.dataset.means === "on";
       renderAll();
     });
@@ -354,7 +476,7 @@
 
   lineButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (button.disabled) return;
+      if (isTransitioning || button.disabled) return;
       state.lines = button.dataset.lines === "on";
       renderAll();
     });
@@ -362,6 +484,7 @@
 
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      if (isTransitioning) return;
       const selected = button.dataset.category;
       state.category = state.category === selected ? null : selected;
       renderAll();
@@ -369,6 +492,7 @@
   });
 
   document.addEventListener("keydown", (event) => {
+    if (isTransitioning) return;
     if (event.key === "Escape" && state.category) {
       state.category = null;
       renderAll();
