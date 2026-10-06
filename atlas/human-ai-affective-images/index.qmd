@@ -5,7 +5,7 @@ toc: false
 ---
 
 ```{=html}
-<link rel="stylesheet" href="atlas.css?v=transition-20261006-1">
+<link rel="stylesheet" href="atlas-v2.css">
 
 <div class="atlas-shell">
 
@@ -167,5 +167,5 @@ toc: false
 
 </div>
 
-<script src="atlas.js?v=transition-20261006-1"></script>
+<script src="atlas-v2.js"></script>
 ```

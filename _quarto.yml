@@ -4,6 +4,8 @@ project:
   resources:
     - atlas/taste-the-music/atlas-data.json
     - atlas/human-ai-affective-images/atlas-data.json
+    - atlas/human-ai-affective-images/atlas-v2.css
+    - atlas/human-ai-affective-images/atlas-v2.js
 
 website:
   title: "EmoLab"
