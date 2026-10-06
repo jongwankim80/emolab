@@ -55,6 +55,13 @@ research:
       multidimensional scaling and vector fitting.
     link_text: Explore the interactive atlas →
     url: /atlas/taste-the-music/
+  atlas_ai:
+    eyebrow: Interactive · Emotion Space Atlas
+    title: Human × AI Affective Image Space
+    text: Explore how humans and ChatGPT place the same 224 affective images in
+      valence–arousal space, including animated source-to-source transitions.
+    link_text: Explore the interactive atlas →
+    url: /atlas/human-ai-affective-images/
   theme_1:
     title: Affective Representation
     summary: How are emotions organized, and what aspects of that organization are
