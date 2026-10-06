@@ -89,6 +89,10 @@
   }
 
   function buildRecords(data) {
+    if (data.group.length !== data.human.length || data.group.length !== data.gpt.length) {
+      throw new Error(`Atlas data length mismatch: group=${data.group.length}, human=${data.human.length}, gpt=${data.gpt.length}`);
+    }
+
     return data.group.map((groupCode, index) => {
       const category = CATEGORY_NAMES[groupCode];
       const human = data.human[index];
