@@ -3,6 +3,7 @@ project:
   output-dir: _site
   resources:
     - atlas/taste-the-music/atlas-data.json
+    - atlas/human-ai-affective-images/atlas-data.json
 
 website:
   title: "EmoLab"
