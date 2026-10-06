@@ -123,8 +123,30 @@
     `;
   }
 
+  function vectorEndpoint3D(vector) {
+    const b = vector.beta_source;
+    const displayBeta = [b.modality, -b.valence, -b.arousal];
+    const norm = Math.hypot(...displayBeta) || 1;
+    return displayBeta.map((value) => vector.r2 * value / norm);
+  }
+
   function updateSelectedVector(vector) {
-    if (!selectedItem || state.view === "3d") return;
+    if (!selectedItem) return;
+
+    if (state.view === "3d") {
+      const endpoint = vectorEndpoint3D(vector);
+      selectedItem.innerHTML = `
+        <div class="selected-name">${escapeHtml(vector.label)}</div>
+        <div class="selected-meta">
+          <span class="selected-tag">Fitted vector</span>
+          <span class="selected-tag">${titleCase(vector.group)}</span>
+        </div>
+        <div class="selected-coords">R² = ${vector.r2.toFixed(2)} · 3D endpoint (${endpoint[0].toFixed(2)}, ${endpoint[1].toFixed(2)}, ${endpoint[2].toFixed(2)})</div>
+        <div class="atlas-vector-note">The arrow points toward higher ratings on this scale.</div>
+      `;
+      return;
+    }
+
     const cfg = currentView();
     const endpoint = vector.endpoints_display[cfg.endpoint];
     selectedItem.innerHTML = `
@@ -358,7 +380,7 @@
           customdata: items.map((s) => [s.id, s.modality, s.category]),
           hovertemplate: "<b>%{text}</b><br>%{customdata[1]} · %{customdata[2]}<extra></extra>",
           marker: {
-            size: 7,
+            size: window.matchMedia("(max-width: 760px)").matches ? 4.5 : 7,
             color: COLORS[category],
             symbol: modality === "taste" ? "circle" : "diamond",
             opacity: !state.category || state.category === category ? 0.95 : 0.13,
@@ -368,6 +390,53 @@
         });
       });
     });
+
+    if (state.vectors !== "off") {
+      const vectorColor = (vector) => {
+        if (vector.group === "taste") return "#245f55";
+        if (vector.group === "evaluation") return "#59636d";
+        return "#7a8792";
+      };
+
+      vectors.filter(vectorShouldShow).forEach((vector) => {
+        const endpoint = vectorEndpoint3D(vector);
+        const color = vectorColor(vector);
+        const length = Math.hypot(...endpoint) || 1;
+        const coneScale = 0.14;
+
+        traces.push({
+          type: "scatter3d",
+          mode: "lines+text",
+          x: [0, endpoint[0]],
+          y: [0, endpoint[1]],
+          z: [0, endpoint[2]],
+          text: ["", vector.label],
+          textposition: "top center",
+          line: { color, width: vector.group === "evaluation" ? 3 : 2.5 },
+          textfont: { color, size: 10 },
+          meta: { kind: "vector", id: vector.id },
+          hovertemplate: "<b>%{text}</b><br>Fitted vector<extra></extra>",
+          showlegend: false
+        });
+
+        traces.push({
+          type: "cone",
+          x: [endpoint[0]],
+          y: [endpoint[1]],
+          z: [endpoint[2]],
+          u: [endpoint[0] / length * coneScale],
+          v: [endpoint[1] / length * coneScale],
+          w: [endpoint[2] / length * coneScale],
+          anchor: "tip",
+          sizemode: "absolute",
+          sizeref: 0.11,
+          colorscale: [[0, color], [1, color]],
+          showscale: false,
+          hoverinfo: "skip",
+          showlegend: false
+        });
+      });
+    }
 
     const layout = {
       margin: { l: 0, r: 0, t: 0, b: 0 },
@@ -400,7 +469,16 @@
         plot3d.removeAllListeners("plotly_unhover");
       }
       plot3d.on("plotly_hover", (event) => {
-        const id = event?.points?.[0]?.customdata?.[0];
+        const point = event?.points?.[0];
+        const meta = point?.data?.meta;
+
+        if (meta?.kind === "vector") {
+          const vector = vectors.find((v) => v.id === meta.id);
+          if (vector) updateSelectedVector(vector);
+          return;
+        }
+
+        const id = point?.customdata?.[0];
         const stimulus = stimuli.find((s) => s.id === id);
         if (stimulus) updateSelectedStimulus(stimulus);
       });
@@ -418,8 +496,8 @@
     });
 
     vectorButtons.forEach((button) => {
-      button.disabled = is3d;
-      button.title = is3d ? "Vector overlays are available in the 2D projections." : "";
+      button.disabled = false;
+      button.title = "";
     });
 
     if (vector3dNote) vector3dNote.hidden = !is3d;

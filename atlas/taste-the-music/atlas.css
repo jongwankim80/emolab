@@ -821,3 +821,23 @@
     grid-row: auto;
   }
 }
+
+
+/* Mobile: keep the same geometry but reduce visual marker size. */
+@media (max-width: 760px) {
+  .atlas-point {
+    width: 0.64rem;
+    height: 0.64rem;
+  }
+
+  .atlas-point:hover,
+  .atlas-point:focus-visible {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+
+  .atlas-point.is-highlighted {
+    width: 0.76rem;
+    height: 0.76rem;
+  }
+}
