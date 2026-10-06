@@ -73,8 +73,7 @@
       const xt = document.createElement("span");
       xt.className = "atlas-tick";
       xt.textContent = String(value);
-      xt.style.left = `${scaleX(value) - 8} / 0.84%`;
-      // Set exact percent after mapping the plotting region (8–92) to the tick container (0–100).
+      // Map the plotting region (8–92%) to this tick container (0–100%).
       xt.style.left = `${((scaleX(value) - 8) / 84) * 100}%`;
       xFrag.appendChild(xt);
 
