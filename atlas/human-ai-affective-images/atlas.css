@@ -1291,3 +1291,40 @@
     left: 0.9rem;
   }
 }
+
+
+/* Human ↔ ChatGPT source transition */
+.atlas-point {
+  transition:
+    left 720ms cubic-bezier(.4, 0, .2, 1),
+    top 720ms cubic-bezier(.4, 0, .2, 1),
+    opacity 140ms ease,
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    border-radius 720ms cubic-bezier(.4, 0, .2, 1),
+    border-width 720ms cubic-bezier(.4, 0, .2, 1),
+    background-color 720ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.atlas-mean-marker {
+  transition:
+    left 720ms cubic-bezier(.4, 0, .2, 1),
+    top 720ms cubic-bezier(.4, 0, .2, 1),
+    border-radius 720ms cubic-bezier(.4, 0, .2, 1),
+    opacity 140ms ease;
+}
+
+.atlas-plot-placeholder.is-transitioning .atlas-point {
+  pointer-events: none;
+}
+
+.atlas-plot-placeholder.is-transitioning .atlas-tooltip {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-point,
+  .atlas-mean-marker {
+    transition-duration: 0ms !important;
+  }
+}
