@@ -1,0 +1,171 @@
+---
+title: "Human × AI Affective Image Space"
+page-layout: full
+toc: false
+---
+
+```{=html}
+<link rel="stylesheet" href="atlas.css">
+
+<div class="atlas-shell">
+
+<header class="atlas-hero">
+  <a class="atlas-back" href="../../research.html" aria-label="Back to EMOLAB Research">← Back to EMOLAB Research</a>
+  <div class="atlas-series">EMOLAB Emotion Space Atlas</div>
+  <h1>Human × AI Affective Image Space</h1>
+  <p class="atlas-subtitle">How humans and ChatGPT place the same MATTER images in valence–arousal space</p>
+  <div class="atlas-meta">
+    <span>Kim (2026) · <em>Perception</em></span>
+    <a class="atlas-paper-link" href="https://doi.org/10.1177/03010066251391729">View paper ↗</a>
+  </div>
+</header>
+
+<section class="atlas-workspace" aria-label="Interactive affective image space">
+
+  <div class="atlas-panel atlas-controls" role="complementary" aria-label="Atlas controls">
+    <div class="atlas-panel-heading">
+      <span class="atlas-kicker">Explore</span>
+      <h2>View controls</h2>
+    </div>
+
+    <div class="atlas-control-group">
+      <h3>View</h3>
+      <div class="atlas-control-stack">
+        <button class="atlas-control active" type="button" data-view="human" aria-pressed="true">Humans</button>
+        <button class="atlas-control" type="button" data-view="gpt" aria-pressed="false">ChatGPT</button>
+        <button class="atlas-control" type="button" data-view="overlay" aria-pressed="false">Overlay</button>
+      </div>
+    </div>
+
+    <div class="atlas-control-group">
+      <h3>Category means</h3>
+      <div class="atlas-chip-row">
+        <button class="atlas-chip" type="button" data-means="off" aria-pressed="false">Off</button>
+        <button class="atlas-chip active" type="button" data-means="on" aria-pressed="true">On</button>
+      </div>
+    </div>
+
+    <div class="atlas-control-group">
+      <h3>Pair lines</h3>
+      <div class="atlas-chip-row">
+        <button class="atlas-chip" type="button" data-lines="off" aria-pressed="false">Off</button>
+        <button class="atlas-chip active" type="button" data-lines="on" aria-pressed="true">On</button>
+      </div>
+      <p class="atlas-control-note">Pair lines appear only in Overlay view and connect the same image across Human and ChatGPT ratings.</p>
+    </div>
+
+    <div class="atlas-control-group">
+      <h3>Highlight</h3>
+      <div class="atlas-category-list" aria-label="Affective category filters">
+        <button class="atlas-category disgusting" type="button" data-category="disgusting" aria-pressed="false"><span></span>Disgusting</button>
+        <button class="atlas-category fearful" type="button" data-category="fearful" aria-pressed="false"><span></span>Fearful</button>
+        <button class="atlas-category inconsistent" type="button" data-category="inconsistent" aria-pressed="false"><span></span>Inconsistent</button>
+        <button class="atlas-category mirthful" type="button" data-category="mirthful" aria-pressed="false"><span></span>Mirthful</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="atlas-plot-card" aria-label="Valence arousal plot">
+    <div class="atlas-plot-toolbar">
+      <div>
+        <span class="atlas-kicker">Affective image space</span>
+        <h2 id="atlas-plot-title">Humans</h2>
+      </div>
+      <div id="atlas-view-badge" class="atlas-view-badge">224 images</div>
+    </div>
+
+    <div id="affect-plot" class="atlas-plot-placeholder" role="img" aria-label="Valence by arousal ratings of MATTER images">
+      <div id="atlas-ticks-x" class="atlas-ticks atlas-ticks-x" aria-hidden="true"></div>
+      <div id="atlas-ticks-y" class="atlas-ticks atlas-ticks-y" aria-hidden="true"></div>
+      <div class="atlas-axis-label atlas-axis-x">Valence</div>
+      <div class="atlas-axis-label atlas-axis-y">Arousal</div>
+      <svg id="atlas-lines-layer" class="atlas-lines-layer" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <div id="atlas-points-layer" class="atlas-points-layer"></div>
+      <div id="atlas-means-layer" class="atlas-means-layer"></div>
+      <div id="atlas-tooltip" class="atlas-tooltip" role="tooltip" hidden></div>
+    </div>
+
+    <div class="atlas-plot-caption">
+      <span>Shape = source</span>
+      <span>Color = image category</span>
+      <span>Dashed line = same image across sources</span>
+    </div>
+  </section>
+
+  <div class="atlas-panel atlas-info" role="complementary" aria-label="Atlas information">
+    <div class="atlas-panel-heading">
+      <span class="atlas-kicker">Guide</span>
+      <h2>Read the space</h2>
+    </div>
+
+    <section class="atlas-info-block">
+      <h3>Selected image</h3>
+      <div id="atlas-selected-item" class="atlas-selected-item" aria-live="polite">
+        <p class="atlas-muted">Hover over a point to compare Human and ChatGPT ratings for that image.</p>
+      </div>
+    </section>
+
+    <section class="atlas-info-block">
+      <h3>Category mean</h3>
+      <div id="atlas-category-summary">
+        <p class="atlas-muted">Select a category to compare its mean position across sources.</p>
+      </div>
+    </section>
+
+    <section class="atlas-info-block">
+      <h3>Legend</h3>
+      <div class="atlas-legend-row"><span class="source-marker source-human"></span><span>Human</span></div>
+      <div class="atlas-legend-row"><span class="source-marker source-gpt"></span><span>ChatGPT</span></div>
+    </section>
+
+    <section class="atlas-info-block">
+      <h3>Axes</h3>
+      <div class="atlas-dimension">
+        <div><strong>Valence</strong><span>1–9</span></div>
+        <p>Negative ↔ Positive</p>
+      </div>
+      <div class="atlas-dimension">
+        <div><strong>Arousal</strong><span>1–9</span></div>
+        <p>Low ↔ High</p>
+      </div>
+    </section>
+  </div>
+
+</section>
+
+<section class="atlas-reading">
+  <div class="atlas-section-heading">
+    <span class="atlas-kicker">Interpretation</span>
+    <h2>How the spaces differ</h2>
+  </div>
+  <div class="atlas-reading-grid">
+    <article>
+      <span>01</span>
+      <h3>Lower arousal</h3>
+      <p>ChatGPT placed all four category means lower on arousal, with the largest drops for fearful and disgusting images.</p>
+    </article>
+    <article>
+      <span>02</span>
+      <h3>Mirthful shift</h3>
+      <p>Mirthful images moved strongly toward lower valence in ChatGPT ratings (ΔV = −1.81).</p>
+    </article>
+    <article>
+      <span>03</span>
+      <h3>Disgusting shift</h3>
+      <p>Disgusting images moved toward higher valence in ChatGPT ratings (ΔV = +1.08), while arousal decreased.</p>
+    </article>
+  </div>
+</section>
+
+<section class="atlas-method-strip" aria-label="Study summary">
+  <span><strong>224</strong> images</span>
+  <span><strong>4</strong> categories</span>
+  <span><strong>2</strong> sources</span>
+  <span><strong>1–9</strong> rating scale</span>
+  <span><strong>Valence × Arousal</strong> space</span>
+</section>
+
+</div>
+
+<script src="atlas.js"></script>
+```
