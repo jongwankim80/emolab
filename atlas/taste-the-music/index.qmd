@@ -54,7 +54,7 @@ toc: false
         <button class="atlas-chip active" type="button" data-vectors="key" aria-pressed="true">Key</button>
         <button class="atlas-chip" type="button" data-vectors="all" aria-pressed="false">All</button>
       </div>
-      <p id="atlas-vector-3d-note" class="atlas-control-note" hidden>Vector overlays are shown in the 2D projections.</p>
+      <p id="atlas-vector-3d-note" class="atlas-control-note" hidden>3D vectors use the same published 3D regression coefficients and R² values.</p>
     </div>
 
     <div class="atlas-control-group">
