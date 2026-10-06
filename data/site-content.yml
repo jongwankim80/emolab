@@ -48,6 +48,13 @@ research:
       modalities, biological systems, and artificial intelligence. These four
       themes connect our behavioral, neuroimaging, physiological, and
       methodological work.
+  atlas:
+    eyebrow: Interactive · Emotion Space Atlas
+    title: Taste the Music
+    text: Explore how taste and music share an affective space using interactive
+      multidimensional scaling and vector fitting.
+    link_text: Explore the interactive atlas →
+    url: /atlas/taste-the-music/
   theme_1:
     title: Affective Representation
     summary: How are emotions organized, and what aspects of that organization are
