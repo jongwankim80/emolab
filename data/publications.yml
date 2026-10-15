@@ -9,11 +9,16 @@ publications:
     featured: false
   - year: 2026
     month: 10
-    status: forthcoming
+    status: published
     authors: 박채리, 김종완
     title: Affective mapping across gustatory and auditory modalities is asymmetric
       and low-dimensional
     journal: 감성과학
+    volume: "29"
+    issue: "5"
+    pages: 19-33
+    doi: Affective mapping across gustatory and auditory modalities is asymmetric
+      and low-dimensional
     featured: false
   - year: 2026
     month: 8
@@ -82,7 +87,6 @@ publications:
     issue: "3"
     pages: 295–298
     doi: 10.1177/03010066251391729
-    atlas: /atlas/human-ai-affective-images/
     featured: false
   - year: 2025
     month: 12
@@ -227,7 +231,6 @@ publications:
     volume: "249"
     pages: "105830"
     doi: 10.1016/j.cognition.2024.105830
-    atlas: /atlas/taste-the-music/
     featured: true
   - year: 2024
     month: 6
