@@ -261,6 +261,15 @@ content:
                 - { value: published, label: Published }
                 - { value: forthcoming, label: Forthcoming }
                 - { value: in press, label: In press }
+          - name: category
+            label: Research category
+            type: select
+            options:
+              values:
+                - { value: affect, label: Affective Representation }
+                - { value: methods, label: Multivariate Methods }
+                - { value: brain, label: Brain & Physiology }
+                - { value: ai, label: Humans & Artificial Intelligence (AI) }
           - { name: authors, label: Authors, type: text, required: true }
           - { name: title, label: Title, type: text, required: true }
           - { name: journal, label: Journal, type: string }
