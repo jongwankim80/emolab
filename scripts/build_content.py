@@ -66,6 +66,7 @@ PUB_THEME_ICONS = {
     'methods': ('images/research/methods.png', 'Multivariate Methods'),
     'brain': ('images/research/brain.png', 'Brain & Physiology'),
     'ai': ('images/research/ai.png', 'Humans & Artificial Intelligence'),
+    'etc': ('images/research/etc.svg', 'Etc'),
 }
 
 
@@ -75,7 +76,7 @@ def publication_card(p, compact=False):
     if status in {'in press', 'forthcoming'}:
         badge = f'<span class="status-badge">{escape(status.title())}</span>'
 
-    theme = str(p.get('category') or '').strip().lower()
+    theme = str(p.get('category') or 'etc').strip().lower()
     icon_html = ''
     if not compact and theme in PUB_THEME_ICONS:
         icon_path, icon_label = PUB_THEME_ICONS[theme]
