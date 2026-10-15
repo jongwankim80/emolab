@@ -303,13 +303,14 @@ main.content { max-width: var(--emolab-max); }
 
 
 /* Publication research-theme icons */
-.pub-card:not(.compact):has(.pub-theme-icon) {
+.pub-card:not(.compact) {
   display: grid;
   grid-template-columns: 92px minmax(0, 1fr);
   gap: 1.25rem;
   align-items: start;
 }
 .pub-card:not(.compact) .pub-card-body {
+  grid-column: 2;
   min-width: 0;
 }
 .pub-theme-icon {
@@ -324,7 +325,7 @@ main.content { max-width: var(--emolab-max); }
   display: block;
 }
 @media (max-width: 640px) {
-  .pub-card:not(.compact):has(.pub-theme-icon) {
+  .pub-card:not(.compact) {
     grid-template-columns: 64px minmax(0, 1fr);
     gap: .9rem;
   }
