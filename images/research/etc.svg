@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Etc publication category</title>
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f5f7"/>
+      <stop offset="1" stop-color="#dfe3e7"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="256" cy="205" r="154" fill="url(#fill)" stroke="#555d66" stroke-width="16"/>
+    <g stroke="#555d66" stroke-width="18">
+      <path d="M230 181 L190 141"/>
+      <path d="M282 181 L324 141"/>
+      <path d="M230 230 L190 270"/>
+      <path d="M282 230 L324 270"/>
+    </g>
+    <circle cx="256" cy="205" r="38" fill="#555d66" stroke="none"/>
+    <circle cx="167" cy="118" r="30" fill="#555d66" stroke="none"/>
+    <rect x="315" y="87" width="62" height="62" rx="14" fill="#555d66" stroke="none"/>
+    <path d="M142 305 L174 250 L206 305 Z" fill="#555d66" stroke="none"/>
+    <rect x="316" y="251" width="58" height="58" rx="10" transform="rotate(45 345 280)" fill="#555d66" stroke="none"/>
+    <g stroke="#555d66" stroke-width="14">
+      <path d="M113 179 L137 191"/>
+      <path d="M113 231 L137 219"/>
+      <path d="M399 179 L375 191"/>
+      <path d="M399 231 L375 219"/>
+    </g>
+  </g>
+  <text x="256" y="448" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#555d66">Etc</text>
+</svg>
