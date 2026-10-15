@@ -463,3 +463,14 @@ publications:
     pages: 71-80
     doi: 10.14695/KJSOS.2021.24.3.71
     featured: false
+  - year: 2026
+    month: 10
+    status: published
+    authors: Jongwan Kim & Kimin Eom
+    title: "Relational Representations in Classification: Comparing Similarity and
+      Structure-Based Approaches"
+    journal: Frontiers in Psychology
+    volume: "17"
+    pages: "1942038"
+    doi: https://doi.org/10.3389/fpsyg.2026.1942038
+    featured: false
