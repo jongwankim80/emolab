@@ -61,18 +61,40 @@ def pub_links(p, compact=False):
     return '<span class="pub-links">' + ' · '.join(links) + '</span>' if links else ''
 
 
+PUB_THEME_ICONS = {
+    'affect': ('images/research/affect.png', 'Affective Representation'),
+    'methods': ('images/research/methods.png', 'Multivariate Methods'),
+    'brain': ('images/research/brain.png', 'Brain & Physiology'),
+    'ai': ('images/research/ai.png', 'Humans & Artificial Intelligence'),
+}
+
+
 def publication_card(p, compact=False):
     status = str(p.get('status') or 'published').lower()
     badge = ''
     if status in {'in press', 'forthcoming'}:
         badge = f'<span class="status-badge">{escape(status.title())}</span>'
+
+    theme = str(p.get('category') or '').strip().lower()
+    icon_html = ''
+    if not compact and theme in PUB_THEME_ICONS:
+        icon_path, icon_label = PUB_THEME_ICONS[theme]
+        icon_html = (
+            f'<div class="pub-theme-icon">'
+            f'<img src="{escape(icon_path)}" alt="{escape(icon_label)}">'
+            f'</div>'
+        )
+
     cls = 'pub-card compact' if compact else 'pub-card'
     return f'''<article class="{cls}">
-  <div class="pub-kicker">{badge}</div>
-  <h3>{escape(str(p.get('title') or ''))}</h3>
-  <div class="pub-authors">{author_html(str(p.get('authors') or ''))}</div>
-  <div class="pub-meta">{pub_meta(p)}</div>
-  {pub_links(p, compact=compact)}
+  {icon_html}
+  <div class="pub-card-body">
+    <div class="pub-kicker">{badge}</div>
+    <h3>{escape(str(p.get('title') or ''))}</h3>
+    <div class="pub-authors">{author_html(str(p.get('authors') or ''))}</div>
+    <div class="pub-meta">{pub_meta(p)}</div>
+    {pub_links(p, compact=compact)}
+  </div>
 </article>'''
 
 
