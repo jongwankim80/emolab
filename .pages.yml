@@ -270,6 +270,8 @@ content:
                 - { value: methods, label: Multivariate Methods }
                 - { value: brain, label: Brain & Physiology }
                 - { value: ai, label: Humans & Artificial Intelligence (AI) }
+                - { value: etc, label: Etc }
+            default: etc
           - { name: authors, label: Authors, type: text, required: true }
           - { name: title, label: Title, type: text, required: true }
           - { name: journal, label: Journal, type: string }
