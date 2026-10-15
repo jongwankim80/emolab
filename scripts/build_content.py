@@ -86,16 +86,18 @@ def publication_card(p, compact=False):
         )
 
     cls = 'pub-card compact' if compact else 'pub-card'
-    return f'''<article class="{cls}">
-  {icon_html}
-  <div class="pub-card-body">
-    <div class="pub-kicker">{badge}</div>
-    <h3>{escape(str(p.get('title') or ''))}</h3>
-    <div class="pub-authors">{author_html(str(p.get('authors') or ''))}</div>
-    <div class="pub-meta">{pub_meta(p)}</div>
-    {pub_links(p, compact=compact)}
-  </div>
-</article>'''
+    return (
+        f'<article class="{cls}">'
+        f'{icon_html}'
+        f'<div class="pub-card-body">'
+        f'<div class="pub-kicker">{badge}</div>'
+        f'<h3>{escape(str(p.get("title") or ""))}</h3>'
+        f'<div class="pub-authors">{author_html(str(p.get("authors") or ""))}</div>'
+        f'<div class="pub-meta">{pub_meta(p)}</div>'
+        f'{pub_links(p, compact=compact)}'
+        f'</div>'
+        f'</article>'
+    )
 
 
 def txt(value):
