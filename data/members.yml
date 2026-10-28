@@ -58,3 +58,9 @@ members:
     degree: M.A.
     current_position: Ph.D. student, University of Miami
     current: false
+  - name: Yeowon Kim
+    name_ko: 김여원
+    role: Undergraduate Researcher
+    group: undergraduate
+    year: 3rd year
+    current: true
