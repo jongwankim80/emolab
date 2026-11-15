@@ -48,20 +48,6 @@ research:
       modalities, biological systems, and artificial intelligence. These four
       themes connect our behavioral, neuroimaging, physiological, and
       methodological work.
-  atlas:
-    eyebrow: Interactive · Emotion Space Atlas
-    title: Taste the Music
-    text: Explore how taste and music share an affective space using interactive
-      multidimensional scaling and vector fitting.
-    link_text: Explore the interactive atlas →
-    url: /atlas/taste-the-music/
-  atlas_ai:
-    eyebrow: Interactive · Emotion Space Atlas
-    title: Human × AI Affective Image Space
-    text: Explore how humans and ChatGPT place the same 224 affective images in
-      valence–arousal space, including animated source-to-source transitions.
-    link_text: Explore the interactive atlas →
-    url: /atlas/human-ai-affective-images/
   theme_1:
     title: Affective Representation
     summary: How are emotions organized, and what aspects of that organization are
@@ -165,5 +151,5 @@ join:
     university: Jeonbuk National University
     office: Humanities & Social Sciences Building, Room 629
     location: Jeonju, Republic of Korea
-    email: jongwankim80@jbnu.ac.kr
+    email: jongwankim80 at jbnu.ac.kr
     phone: +82-63-270-3917
