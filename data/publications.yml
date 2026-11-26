@@ -19,8 +19,7 @@ publications:
     volume: "29"
     issue: "5"
     pages: 19-33
-    doi: Affective mapping across gustatory and auditory modalities is asymmetric
-      and low-dimensional
+    article_url: https://kci.go.kr/kciportal/landing/article.kci?arti_id=ART003389038
     featured: false
   - year: 2026
     month: 8
@@ -470,7 +469,8 @@ publications:
     journal: Journal of cognitive neuroscience
     volume: "34"
     issue: "3"
-    pages: 55-67
+    pages: 495–516
+    doi: 10.1162/jocn_a_01807
     featured: false
   - year: 2021
     month: 12
