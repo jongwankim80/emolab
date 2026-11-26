@@ -6,3 +6,5 @@ page-layout: full
 {{< include generated/publications-intro.md >}}
 
 {{< include generated/publications.md >}}
+
+<script src="publications-filter.js" defer></script>

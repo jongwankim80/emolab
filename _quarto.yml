@@ -6,6 +6,7 @@ project:
     - atlas/human-ai-affective-images/atlas-data.json
     - atlas/human-ai-affective-images/atlas-v2.css
     - atlas/human-ai-affective-images/atlas-v2.js
+    - publications-filter.js
 
 website:
   title: "EmoLab"

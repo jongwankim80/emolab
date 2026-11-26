@@ -87,8 +87,14 @@ def publication_card(p, compact=False):
         )
 
     cls = 'pub-card compact' if compact else 'pub-card'
+    card_attrs = ''
+    if not compact:
+        card_attrs = (
+            f' data-category="{escape(theme, quote=True)}"'
+            f' data-year="{escape(str(p.get("year") or ""), quote=True)}"'
+        )
     return (
-        f'<article class="{cls}">'
+        f'<article class="{cls}"{card_attrs}>'
         f'{icon_html}'
         f'<div class="pub-card-body">'
         f'<div class="pub-kicker">{badge}</div>'
@@ -152,7 +158,36 @@ special = [p for p in pubs if str(p.get('status','')).lower() == 'in press']
 forthcoming = [p for p in pubs if str(p.get('status','')).lower() == 'forthcoming']
 published = [p for p in pubs if str(p.get('status','')).lower() == 'published']
 
-pub_out = []
+pub_years = sorted({str(p.get('year')) for p in pubs if p.get('year')}, reverse=True)
+year_options = ''.join(
+    f'<option value="{escape(year)}">{escape(year)}</option>'
+    for year in pub_years
+)
+
+pub_out = [
+    '<section class="publication-tools" aria-label="Publication filters">',
+    '<div class="pub-tool-top">',
+    '<div class="pub-control pub-search-control">',
+    '<label for="publication-search">Search publications</label>',
+    '<input id="publication-search" class="pub-search-input" type="search" autocomplete="off" placeholder="Search title, author, or journal...">',
+    '</div>',
+    '<div class="pub-control">',
+    '<label for="publication-year">Year</label>',
+    f'<select id="publication-year" class="pub-year-select"><option value="all">All years</option>{year_options}</select>',
+    '</div>',
+    '<button class="pub-reset" id="publication-reset" type="button">Reset</button>',
+    '</div>',
+    '<div class="pub-filter-chips" role="group" aria-label="Research theme">',
+    '<button class="pub-filter-chip" type="button" data-pub-category="all" aria-pressed="true">All</button>',
+    '<button class="pub-filter-chip" type="button" data-pub-category="affect" aria-pressed="false">Affective Representation</button>',
+    '<button class="pub-filter-chip" type="button" data-pub-category="methods" aria-pressed="false">Multivariate Methods</button>',
+    '<button class="pub-filter-chip" type="button" data-pub-category="brain" aria-pressed="false">Brain &amp; Physiology</button>',
+    '<button class="pub-filter-chip" type="button" data-pub-category="ai" aria-pressed="false">Humans &amp; AI</button>',
+    '<button class="pub-filter-chip" type="button" data-pub-category="etc" aria-pressed="false">Other</button>',
+    '</div>',
+    f'<div class="pub-tool-footer"><span id="publication-count" aria-live="polite">Showing {len(pubs)} publications</span></div>',
+    '</section>',
+]
 if special:
     pub_out.append('<section class="pub-year"><div class="year-label">In press</div>')
     pub_out.extend(publication_card(p) for p in special)
@@ -167,6 +202,7 @@ for year in sorted({p['year'] for p in published if p.get('year')}, reverse=True
     year_pubs.sort(key=lambda p: (p.get('month') or 0), reverse=True)
     pub_out.extend(publication_card(p) for p in year_pubs)
     pub_out.append('</section>')
+pub_out.append('<p class="pub-no-results" id="publication-no-results" hidden>No publications match the current filters.</p>')
 (OUT / 'publications.md').write_text('\n'.join(pub_out), encoding='utf-8')
 
 featured = [p for p in pubs if p.get('featured')]
