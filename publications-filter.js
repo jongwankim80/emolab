@@ -71,7 +71,8 @@
       const text = button.dataset.copyText || "";
       const item = button.closest(".pub-citation-actions");
       const status = item ? item.querySelector(".pub-copy-status") : null;
-      const original = button.textContent;
+      const label = button.querySelector(".pub-copy-label");
+      const original = label ? label.textContent : button.textContent;
 
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -87,7 +88,12 @@
           document.execCommand("copy");
           textarea.remove();
         }
-        button.textContent = "Copied";
+        button.classList.add("is-copied");
+        if (label) {
+          label.textContent = "Copied";
+        } else {
+          button.textContent = "Copied";
+        }
         if (status) {
           status.textContent =
             button.dataset.copyKind === "bibtex"
@@ -99,7 +105,12 @@
       }
 
       window.setTimeout(() => {
-        button.textContent = original;
+        button.classList.remove("is-copied");
+        if (label) {
+          label.textContent = original;
+        } else {
+          button.textContent = original;
+        }
         if (status) status.textContent = "";
       }, 1800);
     };

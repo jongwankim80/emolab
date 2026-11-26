@@ -580,23 +580,83 @@ main.content { max-width: var(--emolab-max); }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: .45rem;
-  margin-top: .7rem;
+  gap: .5rem;
+  margin-top: .8rem;
 }
-.pub-copy-btn {
-  border: 1px solid #cdd8d4;
-  border-radius: 999px;
-  background: #fff;
-  color: var(--emolab-accent-dark);
-  padding: .32rem .62rem;
-  font-size: .74rem;
-  font-weight: 740;
-  line-height: 1.2;
-  cursor: pointer;
+button.pub-copy-btn {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: .42rem !important;
+  min-height: 32px !important;
+  margin: 0 !important;
+  padding: .38rem .68rem !important;
+  border: 1px solid rgba(36,95,85,.20) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9f7 100%) !important;
+  color: var(--emolab-accent-dark) !important;
+  box-shadow: 0 1px 2px rgba(24,33,43,.04) !important;
+  font-family: inherit !important;
+  font-size: .74rem !important;
+  font-weight: 760 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  cursor: pointer !important;
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease,
+    box-shadow .15s ease !important;
 }
-.pub-copy-btn:hover {
-  border-color: var(--emolab-accent);
-  background: var(--emolab-soft);
+button.pub-copy-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(36,95,85,.42) !important;
+  background: #eef6f2 !important;
+  box-shadow: 0 4px 10px rgba(36,95,85,.09) !important;
+}
+button.pub-copy-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(36,95,85,.08) !important;
+}
+button.pub-copy-btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(36,95,85,.13) !important;
+}
+.pub-copy-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 14px;
+  color: var(--emolab-accent);
+}
+.pub-copy-icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pub-copy-code {
+  width: auto;
+  flex-basis: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: .67rem;
+  font-weight: 800;
+  letter-spacing: -.08em;
+}
+button.pub-copy-btn.is-copied {
+  border-color: rgba(36,95,85,.28) !important;
+  background: var(--emolab-accent) !important;
+  color: #fff !important;
+}
+button.pub-copy-btn.is-copied .pub-copy-icon {
+  color: #fff;
 }
 .pub-copy-status {
   color: var(--emolab-muted);

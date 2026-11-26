@@ -132,8 +132,16 @@ def citation_actions(p):
     bibtex = escape(bibtex_text(p), quote=True)
     return (
         '<div class="pub-citation-actions">'
-        f'<button type="button" class="pub-copy-btn" data-copy-kind="citation" data-copy-text="{citation}">Copy citation</button>'
-        f'<button type="button" class="pub-copy-btn" data-copy-kind="bibtex" data-copy-text="{bibtex}">BibTeX</button>'
+        f'<button type="button" class="pub-copy-btn pub-copy-citation" data-copy-kind="citation" data-copy-text="{citation}">'
+        '<span class="pub-copy-icon" aria-hidden="true">'
+        '<svg viewBox="0 0 24 24" focusable="false"><path d="M8 7.5V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-1.5M7 8h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/></svg>'
+        '</span>'
+        '<span class="pub-copy-label">Copy citation</span>'
+        '</button>'
+        f'<button type="button" class="pub-copy-btn pub-copy-bibtex" data-copy-kind="bibtex" data-copy-text="{bibtex}">'
+        '<span class="pub-copy-icon pub-copy-code" aria-hidden="true">{ }</span>'
+        '<span class="pub-copy-label">BibTeX</span>'
+        '</button>'
         '<span class="pub-copy-status" aria-live="polite"></span>'
         '</div>'
     )
