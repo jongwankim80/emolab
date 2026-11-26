@@ -130,6 +130,8 @@ join:
     text: We welcome students who are curious about emotion, neuroscience, and
       quantitative methods, and who want to learn research by doing it.
   graduate:
+    status: Open
+    status_key: open
     title: Prospective Graduate Students
     text: Graduate students in EmoLab are expected to take increasing ownership of
       research questions, experimental design, data analysis, and scientific
@@ -138,6 +140,8 @@ join:
     contact_text: If you are considering graduate study, send a short introduction,
       your research interests, and a CV or transcript to
   undergraduate:
+    status: Inquiries welcome
+    status_key: inquiry
     title: Undergraduate Researchers
     text: Undergraduate researchers typically begin with behavioral experiments,
       reading and discussion, basic statistics, and MATLAB or related analysis

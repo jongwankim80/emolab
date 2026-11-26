@@ -502,6 +502,11 @@ resources_body = f'''::: {{.page-intro}}
 (OUT / 'resources.md').write_text(resources_body, encoding='utf-8')
 
 join = site['join']
+grad_status = join['graduate'].get('status') or 'Open'
+grad_status_key = join['graduate'].get('status_key') or 'open'
+ug_status = join['undergraduate'].get('status') or 'Inquiries welcome'
+ug_status_key = join['undergraduate'].get('status_key') or 'inquiry'
+
 join_body = f'''::: {{.page-intro}}
 ::: {{.eyebrow}}
 {txt(join['intro']['eyebrow'])}
@@ -509,14 +514,41 @@ join_body = f'''::: {{.page-intro}}
 {txt(join['intro']['text'])}
 :::
 
+<div class="recruitment-status" aria-label="Current recruitment status">
+  <div class="recruitment-status-head">
+    <span class="recruitment-status-kicker">Current opportunities</span>
+    <span class="recruitment-status-note">Recruitment status</span>
+  </div>
+  <div class="recruitment-status-grid">
+    <div class="recruitment-status-item">
+      <div>
+        <span class="recruitment-status-label">Graduate students</span>
+        <span class="recruitment-status-sub">Prospective graduate study</span>
+      </div>
+      <span class="recruitment-badge recruitment-{txt(grad_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(grad_status)}</span>
+    </div>
+    <div class="recruitment-status-item">
+      <div>
+        <span class="recruitment-status-label">Undergraduate researchers</span>
+        <span class="recruitment-status-sub">JBNU research participation</span>
+      </div>
+      <span class="recruitment-badge recruitment-{txt(ug_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(ug_status)}</span>
+    </div>
+  </div>
+</div>
+
 ::: {{.join-grid}}
 ::: {{.join-card}}
+<span class="join-card-status recruitment-badge recruitment-{txt(grad_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(grad_status)}</span>
+
 ## {txt(join['graduate']['title'])}
 {txt(join['graduate']['text'])}
 
 {txt(join['graduate']['contact_text'])} **{txt(join['contact']['email'])}**.
 :::
 ::: {{.join-card}}
+<span class="join-card-status recruitment-badge recruitment-{txt(ug_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(ug_status)}</span>
+
 ## {txt(join['undergraduate']['title'])}
 {txt(join['undergraduate']['text'])}
 

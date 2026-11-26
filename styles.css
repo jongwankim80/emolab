@@ -674,3 +674,119 @@ button.pub-copy-btn.is-copied .pub-copy-icon {
     padding: .55rem .78rem;
   }
 }
+
+
+/* Join Us recruitment status */
+.recruitment-status {
+  max-width: var(--emolab-max);
+  margin: -1.25rem auto 2rem;
+  padding: 1.15rem 1.25rem 1.2rem;
+  border: 1px solid var(--emolab-border);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(243,247,245,.98), rgba(255,255,255,.98));
+  box-shadow: 0 10px 26px rgba(24,33,43,.035);
+}
+.recruitment-status-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .85rem;
+}
+.recruitment-status-kicker {
+  color: var(--emolab-accent-dark);
+  font-size: .82rem;
+  font-weight: 820;
+  letter-spacing: .02em;
+}
+.recruitment-status-note {
+  color: var(--emolab-muted);
+  font-size: .74rem;
+}
+.recruitment-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .7rem;
+}
+.recruitment-status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(226,231,229,.95);
+  border-radius: 14px;
+  background: rgba(255,255,255,.86);
+}
+.recruitment-status-label,
+.recruitment-status-sub {
+  display: block;
+}
+.recruitment-status-label {
+  color: var(--emolab-ink);
+  font-size: .9rem;
+  font-weight: 760;
+}
+.recruitment-status-sub {
+  margin-top: .16rem;
+  color: var(--emolab-muted);
+  font-size: .74rem;
+}
+.recruitment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  flex: 0 0 auto;
+  padding: .34rem .58rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 790;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.recruitment-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px rgba(36,95,85,.08);
+}
+.recruitment-open {
+  color: var(--emolab-accent-dark);
+  background: #eaf5ef;
+  border: 1px solid rgba(36,95,85,.15);
+}
+.recruitment-inquiry {
+  color: #5d5140;
+  background: #f6f1e8;
+  border: 1px solid rgba(93,81,64,.13);
+}
+.recruitment-closed {
+  color: #7b4650;
+  background: #f8ecee;
+  border: 1px solid rgba(123,70,80,.13);
+}
+.join-card {
+  position: relative;
+}
+.join-card-status {
+  margin-bottom: .85rem;
+}
+.join-card .join-card-status + h2 {
+  margin-top: .2rem;
+}
+@media (max-width: 720px) {
+  .recruitment-status {
+    margin-top: -.5rem;
+  }
+  .recruitment-status-grid {
+    grid-template-columns: 1fr;
+  }
+  .recruitment-status-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .15rem;
+  }
+}
