@@ -10,6 +10,7 @@ project:
 website:
   title: "EmoLab"
   site-url: "https://emolab.jbnu.ac.kr/"
+  google-analytics: "G-JPL4ZNR6ZV"
   navbar:
     background: light
     pinned: true
