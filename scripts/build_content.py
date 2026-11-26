@@ -54,7 +54,7 @@ def pub_links(p, compact=False):
         atlas = str(p.get('atlas') or '').strip()
         if atlas:
             links.append(f'<a class="pub-atlas-link" href="{escape(atlas)}">Interactive Atlas</a>')
-    for key, label in [('pdf','PDF'),('osf','OSF'),('code','Code')]:
+    for key, label in [('article_url','Article'),('pdf','PDF'),('osf','OSF'),('code','Code')]:
         url = str(p.get(key) or '').strip()
         if url:
             links.append(f'<a href="{escape(url)}">{label}</a>')
