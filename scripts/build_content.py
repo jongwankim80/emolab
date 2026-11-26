@@ -507,6 +507,31 @@ grad_status_key = join['graduate'].get('status_key') or 'open'
 ug_status = join['undergraduate'].get('status') or 'Inquiries welcome'
 ug_status_key = join['undergraduate'].get('status_key') or 'inquiry'
 
+recruitment_status_html = (
+    '<div class="recruitment-status" aria-label="Current recruitment status">'
+    '<div class="recruitment-status-head">'
+    '<span class="recruitment-status-kicker">Current opportunities</span>'
+    '<span class="recruitment-status-note">Recruitment status</span>'
+    '</div>'
+    '<div class="recruitment-status-grid">'
+    '<div class="recruitment-status-item">'
+    '<div>'
+    '<span class="recruitment-status-label">Graduate students</span>'
+    '<span class="recruitment-status-sub">Prospective graduate study</span>'
+    '</div>'
+    f'<span class="recruitment-badge recruitment-{txt(grad_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(grad_status)}</span>'
+    '</div>'
+    '<div class="recruitment-status-item">'
+    '<div>'
+    '<span class="recruitment-status-label">Undergraduate researchers</span>'
+    '<span class="recruitment-status-sub">JBNU research participation</span>'
+    '</div>'
+    f'<span class="recruitment-badge recruitment-{txt(ug_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(ug_status)}</span>'
+    '</div>'
+    '</div>'
+    '</div>'
+)
+
 join_body = f'''::: {{.page-intro}}
 ::: {{.eyebrow}}
 {txt(join['intro']['eyebrow'])}
@@ -514,28 +539,7 @@ join_body = f'''::: {{.page-intro}}
 {txt(join['intro']['text'])}
 :::
 
-<div class="recruitment-status" aria-label="Current recruitment status">
-  <div class="recruitment-status-head">
-    <span class="recruitment-status-kicker">Current opportunities</span>
-    <span class="recruitment-status-note">Recruitment status</span>
-  </div>
-  <div class="recruitment-status-grid">
-    <div class="recruitment-status-item">
-      <div>
-        <span class="recruitment-status-label">Graduate students</span>
-        <span class="recruitment-status-sub">Prospective graduate study</span>
-      </div>
-      <span class="recruitment-badge recruitment-{txt(grad_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(grad_status)}</span>
-    </div>
-    <div class="recruitment-status-item">
-      <div>
-        <span class="recruitment-status-label">Undergraduate researchers</span>
-        <span class="recruitment-status-sub">JBNU research participation</span>
-      </div>
-      <span class="recruitment-badge recruitment-{txt(ug_status_key)}"><span class="recruitment-dot" aria-hidden="true"></span>{txt(ug_status)}</span>
-    </div>
-  </div>
-</div>
+{recruitment_status_html}
 
 ::: {{.join-grid}}
 ::: {{.join-card}}
