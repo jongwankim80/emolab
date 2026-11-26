@@ -107,6 +107,32 @@ def publication_card(p, compact=False):
     )
 
 
+def research_publication_item(p):
+    title = escape(str(p.get('title') or ''))
+    authors = author_html(str(p.get('authors') or ''))
+    journal = escape(str(p.get('journal') or ''))
+    year = escape(str(p.get('year') or ''))
+    status = str(p.get('status') or 'published').strip().lower()
+
+    doi = str(p.get('doi') or '').strip()
+    article_url = str(p.get('article_url') or '').strip()
+    href = article_url
+    if doi:
+        href = doi if doi.startswith('http') else f"https://doi.org/{doi}"
+
+    title_html = f'<a href="{escape(href, quote=True)}">{title}</a>' if href else title
+    status_text = ''
+    if status in {'in press', 'forthcoming'}:
+        status_text = f' · {escape(status.title())}'
+
+    return (
+        '<article class="research-pub-item">'
+        f'<div class="research-pub-title">{title_html}</div>'
+        f'<div class="research-pub-meta">{authors} · <em>{journal}</em> · {year}{status_text}</div>'
+        '</article>'
+    )
+
+
 def txt(value):
     return escape(str(value or ''))
 
@@ -341,9 +367,44 @@ theme_icons = {
     4: "images/research/ai.png",
 }
 
+theme_categories = {
+    1: "affect",
+    2: "methods",
+    3: "brain",
+    4: "ai",
+}
+
 for i in range(1, 5):
     th = research[f'theme_{i}']
     qlabel = th.get('questions_label') or 'Questions we ask'
+    category = theme_categories[i]
+    related = [
+        p for p in pubs
+        if str(p.get('category') or '').strip().lower() == category
+        and str(p.get('status') or 'published').strip().lower() in {'published', 'in press', 'forthcoming'}
+    ]
+    related.sort(
+        key=lambda p: (
+            int(p.get('year') or 0),
+            13 if str(p.get('status') or '').strip().lower() in {'in press', 'forthcoming'} else int(p.get('month') or 0),
+        ),
+        reverse=True,
+    )
+    related = related[:3]
+
+    related_html = ''
+    if related:
+        related_items = ''.join(research_publication_item(p) for p in related)
+        related_html = (
+            '<div class="research-publications">'
+            '<div class="research-publications-head">'
+            '<h3>Selected publications</h3>'
+            '<a href="publications.html">View all publications →</a>'
+            '</div>'
+            f'<div class="research-pub-list">{related_items}</div>'
+            '</div>'
+        )
+
     research_parts.append(f'''::: {{.research-theme}}
 ::: {{.theme-side}}
 ::: {{.theme-number}}
@@ -359,6 +420,8 @@ for i in range(1, 5):
 **{txt(qlabel)}:** {txt(th['questions'])}
 
 **Approaches:** {txt(th['approaches'])}
+
+{related_html}
 :::
 :::
 ''')
