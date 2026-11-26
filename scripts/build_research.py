@@ -51,7 +51,7 @@ def publication_url(pub):
     return str(pub.get("article_url") or "").strip()
 
 
-def publication_item(pub):
+def publication_item(pub, index):
     title = txt(pub.get("title"))
     href = publication_url(pub)
     title_html = f'<a href="{escape(href, quote=True)}">{title}</a>' if href else title
@@ -59,9 +59,12 @@ def publication_item(pub):
     status_text = f' · {escape(status.title())}' if status in {"in press", "forthcoming"} else ""
     return (
         '<article class="research-pub-item">'
+        f'<div class="research-pub-index">{index:02d}</div>'
+        '<div class="research-pub-copy">'
         f'<div class="research-pub-title">{title_html}</div>'
         f'<div class="research-pub-meta">{author_html(pub.get("authors"))} · '
         f'<em>{txt(pub.get("journal"))}</em> · {txt(pub.get("year"))}{status_text}</div>'
+        '</div>'
         '</article>'
     )
 
@@ -116,7 +119,10 @@ for i in range(1, 5):
     related = selected_publications(categories[i])
     publications_block = ""
     if related:
-        items = "".join(publication_item(pub) for pub in related)
+        items = "".join(
+            publication_item(pub, index)
+            for index, pub in enumerate(related, start=1)
+        )
         publications_block = (
             '<div class="research-publications">'
             '<div class="research-publications-head">'
