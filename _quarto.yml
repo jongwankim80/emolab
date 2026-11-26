@@ -7,6 +7,7 @@ project:
     - atlas/human-ai-affective-images/atlas-v2.css
     - atlas/human-ai-affective-images/atlas-v2.js
     - publications-filter.js
+    - downloads/emolab-publications.xlsx
 
 website:
   title: "EmoLab"

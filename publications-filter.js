@@ -11,6 +11,7 @@
     const count = document.getElementById("publication-count");
     const noResults = document.getElementById("publication-no-results");
     const categoryButtons = Array.from(document.querySelectorAll("[data-pub-category]"));
+    const copyButtons = Array.from(document.querySelectorAll(".pub-copy-btn"));
 
     let activeCategory = "all";
 
@@ -65,6 +66,47 @@
 
     if (search) search.addEventListener("input", applyFilters);
     if (year) year.addEventListener("change", applyFilters);
+
+    const copyText = async (button) => {
+      const text = button.dataset.copyText || "";
+      const item = button.closest(".pub-citation-actions");
+      const status = item ? item.querySelector(".pub-copy-status") : null;
+      const original = button.textContent;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        button.textContent = "Copied";
+        if (status) {
+          status.textContent =
+            button.dataset.copyKind === "bibtex"
+              ? "BibTeX copied to clipboard."
+              : "Citation copied to clipboard.";
+        }
+      } catch (error) {
+        if (status) status.textContent = "Copy failed. Please try again.";
+      }
+
+      window.setTimeout(() => {
+        button.textContent = original;
+        if (status) status.textContent = "";
+      }, 1800);
+    };
+
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", () => copyText(button));
+    });
 
     if (reset) {
       reset.addEventListener("click", () => {

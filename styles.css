@@ -548,3 +548,69 @@ main.content { max-width: var(--emolab-max); }
     gap: .7rem;
   }
 }
+
+
+/* Publication citation and export controls */
+.pub-tool-actions {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+.pub-download {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--emolab-accent);
+  border-radius: 12px;
+  background: var(--emolab-accent);
+  color: #fff;
+  padding: .72rem .9rem;
+  font-size: .84rem;
+  font-weight: 760;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pub-download:hover {
+  background: var(--emolab-accent-dark);
+  border-color: var(--emolab-accent-dark);
+  color: #fff;
+}
+.pub-citation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .7rem;
+}
+.pub-copy-btn {
+  border: 1px solid #cdd8d4;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--emolab-accent-dark);
+  padding: .32rem .62rem;
+  font-size: .74rem;
+  font-weight: 740;
+  line-height: 1.2;
+  cursor: pointer;
+}
+.pub-copy-btn:hover {
+  border-color: var(--emolab-accent);
+  background: var(--emolab-soft);
+}
+.pub-copy-status {
+  color: var(--emolab-muted);
+  font-size: .72rem;
+  min-height: 1em;
+}
+@media (max-width: 640px) {
+  .pub-tool-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .pub-download,
+  .pub-reset {
+    min-height: 40px;
+    padding: .55rem .78rem;
+  }
+}

@@ -1,6 +1,8 @@
 from pathlib import Path
 from html import escape
 import yaml
+import hashlib
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -42,6 +44,99 @@ def pub_meta(p):
         bits.append(escape(pages))
     detail = ', '.join(bits)
     return f"<em>{journal}</em>{(', ' + detail) if detail else ''}"
+
+
+
+def normalize_doi(value):
+    doi = str(value or '').strip()
+    for prefix in ('https://doi.org/', 'http://doi.org/', 'http://dx.doi.org/', 'https://dx.doi.org/'):
+        if doi.lower().startswith(prefix):
+            return doi[len(prefix):]
+    return doi
+
+
+def citation_text(p):
+    authors = str(p.get('authors') or '').strip()
+    year = str(p.get('year') or '').strip()
+    title = str(p.get('title') or '').strip()
+    journal = str(p.get('journal') or '').strip()
+    volume = str(p.get('volume') or '').strip()
+    issue = str(p.get('issue') or '').strip()
+    pages = str(p.get('pages') or '').strip()
+    status = str(p.get('status') or 'published').strip().lower()
+    doi = normalize_doi(p.get('doi'))
+
+    journal_bits = journal
+    if volume:
+        journal_bits += f", {volume}"
+        if issue:
+            journal_bits += f"({issue})"
+    elif issue:
+        journal_bits += f", ({issue})"
+    if pages:
+        journal_bits += f", {pages}"
+
+    parts = [f"{authors}. ({year}). {title}. {journal_bits}."]
+    if status in {'in press', 'forthcoming'}:
+        parts.append(f"[{status.title()}].")
+    if doi:
+        parts.append(f"https://doi.org/{doi}")
+    elif str(p.get('article_url') or '').strip():
+        parts.append(str(p.get('article_url')).strip())
+    return ' '.join(part for part in parts if part).replace('..', '.')
+
+
+def bibtex_text(p):
+    authors = str(p.get('authors') or '').strip()
+    bib_authors = re.sub(r'\s*,\s*&\s*|\s*&\s*|\s*,\s*', ' and ', authors)
+    title = str(p.get('title') or '').strip()
+    year = str(p.get('year') or '').strip()
+    journal = str(p.get('journal') or '').strip()
+    volume = str(p.get('volume') or '').strip()
+    issue = str(p.get('issue') or '').strip()
+    pages = str(p.get('pages') or '').strip()
+    doi = normalize_doi(p.get('doi'))
+    article_url = str(p.get('article_url') or '').strip()
+
+    digest = hashlib.sha1((title + '|' + year).encode('utf-8')).hexdigest()[:8]
+    key = f"emolab{year}{digest}"
+
+    fields = [
+        ('author', bib_authors),
+        ('title', title),
+        ('journal', journal),
+        ('year', year),
+    ]
+    if volume:
+        fields.append(('volume', volume))
+    if issue:
+        fields.append(('number', issue))
+    if pages:
+        fields.append(('pages', pages))
+    if doi:
+        fields.append(('doi', doi))
+        fields.append(('url', f"https://doi.org/{doi}"))
+    elif article_url:
+        fields.append(('url', article_url))
+
+    lines = [f"@article{{{key},"]
+    for index, (name, value) in enumerate(fields):
+        comma = ',' if index < len(fields) - 1 else ''
+        lines.append(f"  {name} = {{{value}}}{comma}")
+    lines.append("}")
+    return '\n'.join(lines)
+
+
+def citation_actions(p):
+    citation = escape(citation_text(p), quote=True)
+    bibtex = escape(bibtex_text(p), quote=True)
+    return (
+        '<div class="pub-citation-actions">'
+        f'<button type="button" class="pub-copy-btn" data-copy-kind="citation" data-copy-text="{citation}">Copy citation</button>'
+        f'<button type="button" class="pub-copy-btn" data-copy-kind="bibtex" data-copy-text="{bibtex}">BibTeX</button>'
+        '<span class="pub-copy-status" aria-live="polite"></span>'
+        '</div>'
+    )
 
 
 def pub_links(p, compact=False):
@@ -102,6 +197,7 @@ def publication_card(p, compact=False):
         f'<div class="pub-authors">{author_html(str(p.get("authors") or ""))}</div>'
         f'<div class="pub-meta">{pub_meta(p)}</div>'
         f'{pub_links(p, compact=compact)}'
+        f'{citation_actions(p) if not compact else ""}'
         f'</div>'
         f'</article>'
     )
@@ -175,7 +271,10 @@ pub_out = [
     '<label for="publication-year">Year</label>',
     f'<select id="publication-year" class="pub-year-select"><option value="all">All years</option>{year_options}</select>',
     '</div>',
+    '<div class="pub-tool-actions">',
     '<button class="pub-reset" id="publication-reset" type="button">Reset</button>',
+    '<a class="pub-download" href="downloads/emolab-publications.xlsx" download>Download Excel</a>',
+    '</div>',
     '</div>',
     '<div class="pub-filter-chips" role="group" aria-label="Research theme">',
     '<button class="pub-filter-chip" type="button" data-pub-category="all" aria-pressed="true">All</button>',

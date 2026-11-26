@@ -28,10 +28,13 @@ jobs:
           python-version: '3.12'
 
       - name: Install content build dependency
-        run: python -m pip install --disable-pip-version-check pyyaml
+        run: python -m pip install --disable-pip-version-check pyyaml openpyxl
 
       - name: Generate people and publication content
         run: python scripts/build_content.py
+
+      - name: Generate publication Excel export
+        run: python scripts/build_publications_excel.py
 
       - name: Generate fixed Research layout
         run: python scripts/build_research.py
